@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akash V | AI/ML Engineer & Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Akash V — B.Tech AI & Data Science student building intelligent systems with 10+ projects, 91% deepfake detection accuracy, and production-grade full-stack applications.">
+  <meta name="author" content="Akash V">
+  <meta property="og:title" content="Akash V | AI/ML Engineer">
+  <meta property="og:description" content="Full-stack AI/ML engineer building intelligent systems across computer vision, NLP, and emotion recognition.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Fira+Code:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">Akash V</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact" class="nav-cta">Say hi</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero">
+    <canvas class="hero-canvas" id="hero-particles"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-name" id="heroNameHeading" aria-label="Akash V">
+          <span class="hero-name-interactive" id="heroNameInteractive"><span class="letter-flip" data-index="0"><span class="letter-inner"><span class="char-en">A</span><span class="char-jp">ア</span></span></span><span class="letter-flip" data-index="1"><span class="letter-inner"><span class="char-en">k</span><span class="char-jp">カ</span></span></span><span class="letter-flip" data-index="2"><span class="letter-inner"><span class="char-en">a</span><span class="char-jp">シ</span></span></span><span class="letter-flip" data-index="3"><span class="letter-inner"><span class="char-en">s</span><span class="char-jp">ュ</span></span></span><span class="letter-flip" data-index="4"><span class="letter-inner"><span class="char-en">h</span><span class="char-jp">・</span></span></span><span class="hero-name-space">&nbsp;</span><span class="letter-flip" data-index="5"><span class="letter-inner"><span class="char-en">V</span><span class="char-jp">ヴ</span></span></span></span>
+        </h1>
+
+        <p class="hero-description">
+          AI/ML Engineer who builds <strong>intelligent systems</strong> — from deepfake detection
+          to emotion recognition — without pretending the data doesn't matter.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-white">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Say hi →</a>
+        </div>
+      </div>
+
+      <!-- 3D Card Cluster -->
+      <div class="hero-cards-cluster">
+        <!-- Card 1: What I build -->
+        <div class="hero-card hero-card-1">
+          <div class="hero-card-label">What I build</div>
+          <div class="hero-card-tags">
+            <span class="hero-tag teal">Deep Learning</span>
+            <span class="hero-tag emerald">Computer Vision</span>
+            <span class="hero-tag blue">Full-Stack Apps</span>
+            <span class="hero-tag yellow">AI Agents</span>
+          </div>
+          <div class="hero-card-image">
+            <img src="assets/project-mindpulse.jpg" alt="MindPulse project">
+          </div>
+        </div>
+
+        <!-- Card 2: Profile -->
+        <div class="hero-card hero-card-2">
+          <div class="hero-card-label">Who I am</div>
+          <div class="hero-card-image">
+            <img src="assets/profile-photo.png" alt="Akash V" style="height: 200px; object-position: center top;">
+          </div>
+        </div>
+
+        <!-- Card 3: Current work -->
+        <div class="hero-card hero-card-3">
+          <div class="hero-card-label">Current work</div>
+          <div class="hero-card-image">
+            <img src="assets/project-sora.jpg" alt="SORA AI Agent">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GRADIENT DIVIDER ==================== -->
+  <div class="gradient-divider"></div>
+
+  <!-- ==================== ABOUT — STORYTELLING ==================== -->
+  <section class="section story-section" id="about">
+    <div class="section-inner">
+
+      <!-- Story Block 1: Intro -->
+      <div class="story-block animate-on-scroll">
+        <div>
+          <div class="section-label">// About</div>
+          <h2 class="story-heading">Building the future,<br>one model at a time</h2>
+          <p class="story-text">
+            I'm <strong>Akash V</strong> — a B.Tech student in <strong>Artificial Intelligence
+            and Data Science</strong> at Mahendra Engineering College (2024–2028). I don't just
+            study AI; I build things with it.
+          </p>
+          <p class="story-text">
+            With <strong>10+ end-to-end AI/ML projects</strong> shipped — spanning deepfake
+            detection (91% accuracy), facial emotion recognition (84% accuracy), and
+            production-grade web apps — I operate at the intersection of research and real-world
+            impact.
+          </p>
+          <p class="story-text">
+            Currently interning at <strong>Cybernaut Edtech</strong> as Data & Preprocessing
+            Lead, while building advanced AI agents and RAG architectures on the side.
+            <strong>JLPT N3 certified in Japanese</strong>, because continuous learning isn't
+            limited to neural networks.
+          </p>
+
+          <div class="about-metrics-row" id="aboutMetricsRow">
+            <div class="about-metric" tabindex="0" role="group" aria-label="10 plus Projects">
+              <div class="about-metric-value" data-target="10" data-suffix="+">10+</div>
+              <div class="about-metric-label">Projects</div>
+            </div>
+            <div class="about-metric" tabindex="0" role="group" aria-label="91 percent Deepfake Accuracy">
+              <div class="about-metric-value" data-target="91" data-suffix="%">91%</div>
+              <div class="about-metric-label">Deepfake Acc.</div>
+            </div>
+            <div class="about-metric" tabindex="0" role="group" aria-label="84 percent Emotion Accuracy">
+              <div class="about-metric-value" data-target="84" data-suffix="%">84%</div>
+              <div class="about-metric-label">Emotion Acc.</div>
+            </div>
+            <div class="about-metric" tabindex="0" role="group" aria-label="JLPT Level N3">
+              <div class="about-metric-value" data-target="3" data-prefix="N">N3</div>
+              <div class="about-metric-label">JLPT Level</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scattered images -->
+        <div class="story-images">
+          <div class="story-float-img" style="width: 260px; height: 320px; top: 0; left: 40px; transform: rotate(-5deg);">
+            <img src="assets/profile-photo.png" alt="Akash V" style="object-position: center top;">
+          </div>
+          <div class="story-float-img" style="width: 180px; height: 140px; top: 200px; right: 20px; transform: rotate(6deg);">
+            <img src="assets/project-shadowhunt.jpg" alt="ShadowHunt project">
+          </div>
+          <div class="story-float-img" style="width: 160px; height: 120px; bottom: 0; left: 10px; transform: rotate(3deg);">
+            <img src="assets/project-skin-disease.jpg" alt="Skin Disease project">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gradient -->
+  <div class="gradient-divider purple"></div>
+
+  <!-- ==================== TECH MARQUEE (What my world looks like) ==================== -->
+  <section class="section skills-marquee-section" id="skills">
+    <div class="section-inner">
+      <div class="animate-on-scroll">
+        <div class="section-label">// Expertise</div>
+        <h2 class="section-title">What my world looks like</h2>
+        <p class="section-subtitle" style="margin-bottom: 48px;">Battle-tested tools, deep learning frameworks, and production-grade architectures.</p>
+      </div>
+    </div>
+
+    <div class="marquee-showcase-wrap animate-on-scroll">
+        
+        <!-- ROW 1: AI, Deep Learning & Core (Scrolls Left ←, Pauses on Cursor Hover) -->
+        <div class="marquee-row-container row-left" aria-label="AI and Core Technologies">
+          <div class="marquee-track track-left">
+            
+            <!-- Python -->
+            <div class="tech-marquee-card" style="--brand-color: #3776AB; --brand-glow: rgba(55, 118, 171, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M11.9 1.5c-3.1 0-4.9.8-5.7 1.9-.9 1.1-.9 2.5-.9 4.1h5.8v.8H3.8c-1.3 0-2.3.4-2.9 1.3-.7 1-.7 2.4-.7 4.2 0 1.7 0 3.1.7 4.1.7 1 1.7 1.4 3 1.4h1.7v-2.3c0-1.8 1.5-3.3 3.3-3.3h5.7c1 0 1.8-.8 1.8-1.8v-5.6c0-1.5-.7-2.7-1.8-3.5-1.1-.7-2.6-1.1-4.7-1.1zm-1.8 1.9c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9z" fill="#3776AB"/><path d="M18.4 6.2v2.3c0 1.8-1.5 3.3-3.3 3.3H9.4c-1 0-1.8.8-1.8 1.8v5.6c0 1.5.7 2.7 1.8 3.5 1.1.7 2.6 1.1 4.7 1.1 3.1 0 4.9-.8 5.7-1.9.9-1.1.9-2.5.9-4.1h-5.8v-.8h7.3c1.3 0 2.3-.4 2.9-1.3.7-1 .7-2.4.7-4.2 0-1.7 0-3.1-.7-4.1-.7-1-1.7-1.4-3-1.4h-1.7zm-4.6 13.9c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9z" fill="#FFD43B"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Python</span>
+                <span class="card-tag">Language</span>
+              </div>
+            </div>
+
+            <!-- PyTorch -->
+            <div class="tech-marquee-card" style="--brand-color: #EE4C2C; --brand-glow: rgba(238, 76, 44, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M13.5 2.5a.7.7 0 0 0-.9.2L11 5.2a8.5 8.5 0 1 0 5.4 7.8 8.6 8.6 0 0 0-.7-3.4l-1.8 1.8a6.1 6.1 0 1 1-2.9-6.3l1.8-2.5a.7.7 0 0 0-.3-.1z" fill="#EE4C2C"/><circle cx="16.5" cy="5.5" r="1.5" fill="#EE4C2C"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">PyTorch</span>
+                <span class="card-tag">Deep Learning</span>
+              </div>
+            </div>
+
+            <!-- TensorFlow -->
+            <div class="tech-marquee-card" style="--brand-color: #FF6F00; --brand-glow: rgba(255, 111, 0, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2.5l7.5 4.3v8.6L12 21.5l-7.5-6.1V6.8L12 2.5z" fill="#FF6F00"/><path d="M12 2.5l7.5 4.3-3.7 2.2-3.8-2.2V2.5z" fill="#FFA000"/><path d="M4.5 6.8l7.5 4.3v4.4L8.3 13V9l-3.8-2.2z" fill="#FFB300"/><path d="M12 15.5l3.8-2.2v4.4L12 20v-4.5z" fill="#E65100"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">TensorFlow</span>
+                <span class="card-tag">ML Framework</span>
+              </div>
+            </div>
+
+            <!-- OpenCV -->
+            <div class="tech-marquee-card" style="--brand-color: #50B848; --brand-glow: rgba(80, 184, 72, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="7" r="4.5" fill="none" stroke="#EA3829" stroke-width="2.5"/><circle cx="7.5" cy="15.5" r="4.5" fill="none" stroke="#50B848" stroke-width="2.5"/><circle cx="16.5" cy="15.5" r="4.5" fill="none" stroke="#1F69B4" stroke-width="2.5"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">OpenCV</span>
+                <span class="card-tag">Computer Vision</span>
+              </div>
+            </div>
+
+            <!-- Scikit-learn -->
+            <div class="tech-marquee-card" style="--brand-color: #3499CD; --brand-glow: rgba(52, 153, 205, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="7" cy="14" r="5" fill="#F89939"/><circle cx="15" cy="9" r="6" fill="#3499CD"/><circle cx="16" cy="17" r="3.5" fill="#4B6A9B"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Scikit-learn</span>
+                <span class="card-tag">ML Algorithms</span>
+              </div>
+            </div>
+
+            <!-- Hugging Face -->
+            <div class="tech-marquee-card" style="--brand-color: #FFD21E; --brand-glow: rgba(255, 210, 30, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="10" fill="#FFD21E"/><path d="M8 10c0 .8-.5 1.5-1.2 1.5S5.5 10.8 5.5 10s.5-1.5 1.3-1.5S8 9.2 8 10zm10.5 0c0 .8-.5 1.5-1.3 1.5s-1.2-.7-1.2-1.5.5-1.5 1.2-1.5 1.3.7 1.3 1.5z" fill="#222"/><path d="M8 14.5c1 1.5 2.5 2 4 2s3-.5 4-2" stroke="#222" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Hugging Face</span>
+                <span class="card-tag">Transformers</span>
+              </div>
+            </div>
+
+            <!-- LangChain -->
+            <div class="tech-marquee-card" style="--brand-color: #00A67E; --brand-glow: rgba(0, 166, 126, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><rect width="24" height="24" rx="5" fill="#00A67E"/><path d="M6 14a3 3 0 0 1 3-3h3v2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3v2H9a3 3 0 0 1-3-3zm9-6h-3v2h3a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-3v2h3a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3zm-5 5h4v2h-4z" fill="#FFF"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">LangChain</span>
+                <span class="card-tag">Agentic Workflows</span>
+              </div>
+            </div>
+
+            <!-- Gemini API -->
+            <div class="tech-marquee-card" style="--brand-color: #5468FF; --brand-glow: rgba(84, 104, 255, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2C12 7.5 7.5 12 2 12c5.5 0 10 4.5 10 10 0-5.5 4.5-10 10-10-5.5 0-10-4.5-10-10z" fill="#5468FF"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Gemini API</span>
+                <span class="card-tag">Multimodal AI</span>
+              </div>
+            </div>
+
+            <!-- Claude API -->
+            <div class="tech-marquee-card" style="--brand-color: #D97757; --brand-glow: rgba(217, 119, 87, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 3l1.8 5.6H19.5l-4.5 3.3 1.7 5.5L12 14.2l-4.7 3.2 1.7-5.5L4.5 8.6h5.7L12 3z" fill="#D97757"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Claude API</span>
+                <span class="card-tag">LLM Reasoning</span>
+              </div>
+            </div>
+
+            <!-- Google Colab -->
+            <div class="tech-marquee-card" style="--brand-color: #F9AB00; --brand-glow: rgba(249, 171, 0, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 12c-2.2-2.2-5.8-2.2-8 0s-2.2 5.8 0 8 5.8 2.2 8 0c2.2 2.2 5.8 2.2 8 0s2.2-5.8 0-8-5.8-2.2-8 0z" fill="none" stroke="#F9AB00" stroke-width="2.5"/><circle cx="8" cy="16" r="2" fill="#F9AB00"/><circle cx="16" cy="16" r="2" fill="#E37400"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Google Colab</span>
+                <span class="card-tag">Cloud GPU</span>
+              </div>
+            </div>
+
+            <!-- Google Cloud -->
+            <div class="tech-marquee-card" style="--brand-color: #4285F4; --brand-glow: rgba(66, 133, 244, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" fill="#4285F4"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Google Cloud</span>
+                <span class="card-tag">Cloud Platform</span>
+              </div>
+            </div>
+
+            <!-- R Language -->
+            <div class="tech-marquee-card" style="--brand-color: #276DC3; --brand-glow: rgba(39, 109, 195, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-4H9v4H7V8h4.5c2 0 3.5 1.2 3.5 3 0 1.4-.9 2.5-2.2 2.9L15 16h-2zm-2-6V9.5H9V12h2c.8 0 1.5-.4 1.5-1s-.7-1-1.5-1z" fill="#276DC3"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">R Language</span>
+                <span class="card-tag">Data Analysis</span>
+              </div>
+            </div>
+
+            <!-- ================= REPEAT FOR SEAMLESS INFINITE LOOP ================= -->
+            <div class="tech-marquee-card" style="--brand-color: #3776AB; --brand-glow: rgba(55, 118, 171, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M11.9 1.5c-3.1 0-4.9.8-5.7 1.9-.9 1.1-.9 2.5-.9 4.1h5.8v.8H3.8c-1.3 0-2.3.4-2.9 1.3-.7 1-.7 2.4-.7 4.2 0 1.7 0 3.1.7 4.1.7 1 1.7 1.4 3 1.4h1.7v-2.3c0-1.8 1.5-3.3 3.3-3.3h5.7c1 0 1.8-.8 1.8-1.8v-5.6c0-1.5-.7-2.7-1.8-3.5-1.1-.7-2.6-1.1-4.7-1.1zm-1.8 1.9c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9z" fill="#3776AB"/><path d="M18.4 6.2v2.3c0 1.8-1.5 3.3-3.3 3.3H9.4c-1 0-1.8.8-1.8 1.8v5.6c0 1.5.7 2.7 1.8 3.5 1.1.7 2.6 1.1 4.7 1.1 3.1 0 4.9-.8 5.7-1.9.9-1.1.9-2.5.9-4.1h-5.8v-.8h7.3c1.3 0 2.3-.4 2.9-1.3.7-1 .7-2.4.7-4.2 0-1.7 0-3.1-.7-4.1-.7-1-1.7-1.4-3-1.4h-1.7zm-4.6 13.9c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9z" fill="#FFD43B"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Python</span>
+                <span class="card-tag">Language</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #EE4C2C; --brand-glow: rgba(238, 76, 44, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M13.5 2.5a.7.7 0 0 0-.9.2L11 5.2a8.5 8.5 0 1 0 5.4 7.8 8.6 8.6 0 0 0-.7-3.4l-1.8 1.8a6.1 6.1 0 1 1-2.9-6.3l1.8-2.5a.7.7 0 0 0-.3-.1z" fill="#EE4C2C"/><circle cx="16.5" cy="5.5" r="1.5" fill="#EE4C2C"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">PyTorch</span>
+                <span class="card-tag">Deep Learning</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #FF6F00; --brand-glow: rgba(255, 111, 0, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2.5l7.5 4.3v8.6L12 21.5l-7.5-6.1V6.8L12 2.5z" fill="#FF6F00"/><path d="M12 2.5l7.5 4.3-3.7 2.2-3.8-2.2V2.5z" fill="#FFA000"/><path d="M4.5 6.8l7.5 4.3v4.4L8.3 13V9l-3.8-2.2z" fill="#FFB300"/><path d="M12 15.5l3.8-2.2v4.4L12 20v-4.5z" fill="#E65100"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">TensorFlow</span>
+                <span class="card-tag">ML Framework</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #50B848; --brand-glow: rgba(80, 184, 72, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="7" r="4.5" fill="none" stroke="#EA3829" stroke-width="2.5"/><circle cx="7.5" cy="15.5" r="4.5" fill="none" stroke="#50B848" stroke-width="2.5"/><circle cx="16.5" cy="15.5" r="4.5" fill="none" stroke="#1F69B4" stroke-width="2.5"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">OpenCV</span>
+                <span class="card-tag">Computer Vision</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #3499CD; --brand-glow: rgba(52, 153, 205, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="7" cy="14" r="5" fill="#F89939"/><circle cx="15" cy="9" r="6" fill="#3499CD"/><circle cx="16" cy="17" r="3.5" fill="#4B6A9B"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Scikit-learn</span>
+                <span class="card-tag">ML Algorithms</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #FFD21E; --brand-glow: rgba(255, 210, 30, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="10" fill="#FFD21E"/><path d="M8 10c0 .8-.5 1.5-1.2 1.5S5.5 10.8 5.5 10s.5-1.5 1.3-1.5S8 9.2 8 10zm10.5 0c0 .8-.5 1.5-1.3 1.5s-1.2-.7-1.2-1.5.5-1.5 1.2-1.5 1.3.7 1.3 1.5z" fill="#222"/><path d="M8 14.5c1 1.5 2.5 2 4 2s3-.5 4-2" stroke="#222" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Hugging Face</span>
+                <span class="card-tag">Transformers</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #00A67E; --brand-glow: rgba(0, 166, 126, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><rect width="24" height="24" rx="5" fill="#00A67E"/><path d="M6 14a3 3 0 0 1 3-3h3v2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3v2H9a3 3 0 0 1-3-3zm9-6h-3v2h3a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-3v2h3a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3zm-5 5h4v2h-4z" fill="#FFF"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">LangChain</span>
+                <span class="card-tag">Agentic Workflows</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #5468FF; --brand-glow: rgba(84, 104, 255, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2C12 7.5 7.5 12 2 12c5.5 0 10 4.5 10 10 0-5.5 4.5-10 10-10-5.5 0-10-4.5-10-10z" fill="#5468FF"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Gemini API</span>
+                <span class="card-tag">Multimodal AI</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #D97757; --brand-glow: rgba(217, 119, 87, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 3l1.8 5.6H19.5l-4.5 3.3 1.7 5.5L12 14.2l-4.7 3.2 1.7-5.5L4.5 8.6h5.7L12 3z" fill="#D97757"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Claude API</span>
+                <span class="card-tag">LLM Reasoning</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #F9AB00; --brand-glow: rgba(249, 171, 0, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 12c-2.2-2.2-5.8-2.2-8 0s-2.2 5.8 0 8 5.8 2.2 8 0c2.2 2.2 5.8 2.2 8 0s2.2-5.8 0-8-5.8-2.2-8 0z" fill="none" stroke="#F9AB00" stroke-width="2.5"/><circle cx="8" cy="16" r="2" fill="#F9AB00"/><circle cx="16" cy="16" r="2" fill="#E37400"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Google Colab</span>
+                <span class="card-tag">Cloud GPU</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #4285F4; --brand-glow: rgba(66, 133, 244, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" fill="#4285F4"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Google Cloud</span>
+                <span class="card-tag">Cloud Platform</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #276DC3; --brand-glow: rgba(39, 109, 195, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-4H9v4H7V8h4.5c2 0 3.5 1.2 3.5 3 0 1.4-.9 2.5-2.2 2.9L15 16h-2zm-2-6V9.5H9V12h2c.8 0 1.5-.4 1.5-1s-.7-1-1.5-1z" fill="#276DC3"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">R Language</span>
+                <span class="card-tag">Data Analysis</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ROW 2: Web, Cloud & Systems (Scrolls Right →, Pauses on Cursor Hover) -->
+        <div class="marquee-row-container row-right" aria-label="Web and Systems Technologies">
+          <div class="marquee-track track-right">
+            
+            <!-- React 18 -->
+            <div class="tech-marquee-card" style="--brand-color: #61DAFB; --brand-glow: rgba(97, 218, 251, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><ellipse cx="12" cy="12" rx="9" ry="3.5" fill="none" stroke="#61DAFB" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(60 12 12)" fill="none" stroke="#61DAFB" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(120 12 12)" fill="none" stroke="#61DAFB" stroke-width="1.6"/><circle cx="12" cy="12" r="1.6" fill="#61DAFB"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">React 18</span>
+                <span class="card-tag">Frontend UI</span>
+              </div>
+            </div>
+
+            <!-- FastAPI -->
+            <div class="tech-marquee-card" style="--brand-color: #05998B; --brand-glow: rgba(5, 153, 139, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm1 14h-2v-4H8l5-7v4h3l-3 7z" fill="#05998B"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">FastAPI</span>
+                <span class="card-tag">Python API</span>
+              </div>
+            </div>
+
+            <!-- Docker -->
+            <div class="tech-marquee-card" style="--brand-color: #2496ED; --brand-glow: rgba(36, 150, 237, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M22.5 10.5c-.3-.2-1.3-.3-2.1.2-.5.3-.9.8-1.1 1.3-.7-.4-1.8-.7-2.9-.2-.1-.7-.4-1.3-.9-1.8l-.5-.5-.4.5c-.7.9-.9 2-.8 3-.8.6-2.1.9-3.7.9H2.5c-.4 1.4.1 3 1.1 4.1 1.5 1.7 4.2 2.4 7.4 2.4 5.8 0 10.2-2.9 11.8-8.2.3-.2.5-.5.7-.8.3-.3.4-.6.3-.9h-1.3zM4 11.5h2v2H4v-2zm3 0h2v2H7v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2zm-6-3h2v2H7V8.5zm3 0h2v2h-2V8.5zm3 0h2v2h-2V8.5zm0-3h2v2h-2V5.5z" fill="#2496ED"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Docker</span>
+                <span class="card-tag">Containers</span>
+              </div>
+            </div>
+
+            <!-- PostgreSQL -->
+            <div class="tech-marquee-card" style="--brand-color: #336791; --brand-glow: rgba(51, 103, 145, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.2-.1-.8-.2-2 .1-2.9.2-.9 1.5-6.3 1.5-6.3s-.4-.8-.4-1.9c0-1.8 1-3.1 2.3-3.1 1.1 0 1.6.8 1.6 1.8 0 1.1-.7 2.7-1.1 4.3-.3 1.3.6 2.3 1.9 2.3 2.3 0 4.1-2.4 4.1-5.9 0-3.1-2.2-5.3-5.4-5.3-3.7 0-5.8 2.8-5.8 5.6 0 1.1.4 2.3 1 3 .1.1.1.2.1.4-.1.4-.3 1.3-.4 1.5-.1.3-.2.3-.5.2-1.9-.9-3.1-3.7-3.1-5.9 0-4.8 3.5-9.2 10.1-9.2 5.3 0 9.4 3.8 9.4 8.8 0 5.3-3.3 9.5-8 9.5-1.6 0-3-.8-3.5-1.8l-1 3.7c-.4 1.4-1.4 3.1-2.1 4.2 1.4.4 2.9.7 4.4.7 5.5 0 10-4.5 10-10S17.5 2 12 2z" fill="#336791"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">PostgreSQL</span>
+                <span class="card-tag">Relational DB</span>
+              </div>
+            </div>
+
+            <!-- Supabase -->
+            <div class="tech-marquee-card" style="--brand-color: #3ECF8E; --brand-glow: rgba(62, 207, 142, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M13.5 2L3 13.5h7.5L9 22l12-11.5h-7.5L13.5 2z" fill="#3ECF8E"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Supabase</span>
+                <span class="card-tag">Cloud Backend</span>
+              </div>
+            </div>
+
+            <!-- Tailwind CSS -->
+            <div class="tech-marquee-card" style="--brand-color: #38BDF8; --brand-glow: rgba(56, 189, 248, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 6c-2.4 0-3.9 1.2-4.5 3.6 1-.9 2.1-1.3 3.3-1.1 1 .2 1.7.9 2.5 1.7 1.3 1.3 2.7 2.8 5.7 2.8 2.4 0 3.9-1.2 4.5-3.6-1 .9-2.1 1.3-3.3 1.1-1-.2-1.7-.9-2.5-1.7-1.3-1.3-2.7-2.8-5.7-2.8zm-7 6c-2.4 0-3.9 1.2-4.5 3.6 1-.9 2.1-1.3 3.3-1.1 1 .2 1.7.9 2.5 1.7 1.3 1.3 2.7 2.8 5.7 2.8 2.4 0 3.9-1.2 4.5-3.6-1 .9-2.1 1.3-3.3 1.1-1-.2-1.7-.9-2.5-1.7-1.3-1.3-2.7-2.8-5.7-2.8z" fill="#38BDF8"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Tailwind CSS</span>
+                <span class="card-tag">Design System</span>
+              </div>
+            </div>
+
+            <!-- Three.js -->
+            <div class="tech-marquee-card" style="--brand-color: #FFFFFF; --brand-glow: rgba(255, 255, 255, 0.4);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2L3 21h18L12 2zm0 4.5l5.5 12h-11L12 6.5z" fill="#FFFFFF"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Three.js</span>
+                <span class="card-tag">3D WebGL</span>
+              </div>
+            </div>
+
+            <!-- Flask -->
+            <div class="tech-marquee-card" style="--brand-color: #A0AEC0; --brand-glow: rgba(160, 174, 192, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M10 2v4.5L5.2 17.8c-.8 1.6.3 3.5 2.1 3.5h9.4c1.8 0 2.9-1.9 2.1-3.5L14 6.5V2h-4zm1.5 6.5l3.2 7.5H9.3l2.2-7.5z" fill="#E2E8F0"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Flask</span>
+                <span class="card-tag">Microservices</span>
+              </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="tech-marquee-card" style="--brand-color: #F7DF1E; --brand-glow: rgba(247, 223, 30, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><rect width="24" height="24" rx="4" fill="#F7DF1E"/><path d="M6 18.5l1.6-1c.4.7.8 1.2 1.5 1.2.8 0 1.2-.4 1.2-1.3v-6.4h2v6.4c0 2-1.2 3-3.1 3-1.6 0-2.6-.8-3.2-1.9zm8.4-.2l1.6-.9c.4.8 1.1 1.3 2 1.3 1 0 1.6-.5 1.6-1.1 0-.8-.6-1.1-1.8-1.6l-.6-.3c-1.8-.7-3-1.7-3-3.6 0-1.8 1.4-3.2 3.6-3.2 1.6 0 2.7.6 3.4 1.8l-1.5 1c-.4-.6-.9-.9-1.9-.9-.9 0-1.5.5-1.5 1 0 .7.5 1 1.6 1.4l.6.3c2.1.9 3.2 1.8 3.2 3.8 0 2.2-1.7 3.4-3.9 3.4-2.1 0-3.4-1.1-4-2.4z" fill="#000"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">JavaScript</span>
+                <span class="card-tag">Frontend & Node</span>
+              </div>
+            </div>
+
+            <!-- Java -->
+            <div class="tech-marquee-card" style="--brand-color: #EA2D2E; --brand-glow: rgba(234, 45, 46, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M8.7 18.5c2.3.2 4.6.2 6.8-.2.5-.1.8.2.7.7-.2.6-.9.8-1.6.9-2.4.3-4.9.3-7.3-.1-.5-.1-.7-.4-.5-.8.1-.4.5-.6.9-.5zm-1.2 2.5c3.2.3 6.4.2 9.6-.3.6-.1.9.2.9.7-.1.6-.7.8-1.4.9-3.4.4-6.8.4-10.2-.1-.7-.1-.9-.5-.7-.9.1-.3.4-.4.8-.3zm8-8.2c-.3 1.1-1.2 1.8-2.3 2.1-1.8.4-3.7.3-5.5-.2-.5-.1-.8-.4-.7-.9.1-.4.4-.6.9-.5 1.4.3 2.9.4 4.3.1.7-.1 1.4-.5 1.7-1.2.7-1.5-.1-3.2-.3-4.8-.1-.7.2-1.3.8-1.7 1 .8 1.7 2 1.8 3.3.1 1.3-.3 2.5-.7 3.8z" fill="#EA2D2E"/><path d="M12.8 2.2c-.6.8-.7 1.7-.3 2.6.4.8 1.1 1.4 1.5 2.2.6 1.1.5 2.4-.2 3.4-.2.3-.4.3-.6.1-.2-.2-.2-.4-.1-.7.4-.9.4-1.9 0-2.8-.5-.9-1.1-1.7-1.4-2.7-.4-1.1-.1-2.2.7-3.1.2-.2.4-.2.6 0 .2.2.1.4-.2 1z" fill="#5382A1"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Java</span>
+                <span class="card-tag">OOP & Backend</span>
+              </div>
+            </div>
+
+            <!-- Git & GitHub -->
+            <div class="tech-marquee-card" style="--brand-color: #F05032; --brand-glow: rgba(240, 80, 50, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M21.7 10.5l-8.2-8.2c-.6-.6-1.6-.6-2.2 0L8.7 4.9l2.8 2.8c.6-.2 1.3-.1 1.8.4.5.5.6 1.3.4 1.9l2.7 2.7c.6-.2 1.4-.1 1.9.4.7.7.7 1.9 0 2.6-.7.7-1.9.7-2.6 0-.6-.6-.7-1.4-.3-2.1l-2.5-2.5v5.3c.2.2.3.4.3.7 0 1-.8 1.8-1.8 1.8s-1.8-.8-1.8-1.8c0-.7.4-1.3 1-1.6V9.1c-.6-.3-1-.9-1-1.6 0-.4.1-.7.3-1L7.1 3.9 2.3 8.7c-.6.6-.6 1.6 0 2.2l8.2 8.2c.6.6 1.6.6 2.2 0l8.9-8.9c.7-.6.7-1.6.1-2.2z" fill="#F05032"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Git & GitHub</span>
+                <span class="card-tag">DevOps & CI</span>
+              </div>
+            </div>
+
+            <!-- LiveKit -->
+            <div class="tech-marquee-card" style="--brand-color: #2ED8A2; --brand-glow: rgba(46, 216, 162, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="#2ED8A2" stroke-width="2.5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">LiveKit</span>
+                <span class="card-tag">Real-Time Audio</span>
+              </div>
+            </div>
+
+            <!-- ================= REPEAT FOR SEAMLESS INFINITE LOOP ================= -->
+            <div class="tech-marquee-card" style="--brand-color: #61DAFB; --brand-glow: rgba(97, 218, 251, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><ellipse cx="12" cy="12" rx="9" ry="3.5" fill="none" stroke="#61DAFB" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(60 12 12)" fill="none" stroke="#61DAFB" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(120 12 12)" fill="none" stroke="#61DAFB" stroke-width="1.6"/><circle cx="12" cy="12" r="1.6" fill="#61DAFB"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">React 18</span>
+                <span class="card-tag">Frontend UI</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #05998B; --brand-glow: rgba(5, 153, 139, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm1 14h-2v-4H8l5-7v4h3l-3 7z" fill="#05998B"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">FastAPI</span>
+                <span class="card-tag">Python API</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #2496ED; --brand-glow: rgba(36, 150, 237, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M22.5 10.5c-.3-.2-1.3-.3-2.1.2-.5.3-.9.8-1.1 1.3-.7-.4-1.8-.7-2.9-.2-.1-.7-.4-1.3-.9-1.8l-.5-.5-.4.5c-.7.9-.9 2-.8 3-.8.6-2.1.9-3.7.9H2.5c-.4 1.4.1 3 1.1 4.1 1.5 1.7 4.2 2.4 7.4 2.4 5.8 0 10.2-2.9 11.8-8.2.3-.2.5-.5.7-.8.3-.3.4-.6.3-.9h-1.3zM4 11.5h2v2H4v-2zm3 0h2v2H7v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2zm-6-3h2v2H7V8.5zm3 0h2v2h-2V8.5zm3 0h2v2h-2V8.5zm0-3h2v2h-2V5.5z" fill="#2496ED"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Docker</span>
+                <span class="card-tag">Containers</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #336791; --brand-glow: rgba(51, 103, 145, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.2-.1-.8-.2-2 .1-2.9.2-.9 1.5-6.3 1.5-6.3s-.4-.8-.4-1.9c0-1.8 1-3.1 2.3-3.1 1.1 0 1.6.8 1.6 1.8 0 1.1-.7 2.7-1.1 4.3-.3 1.3.6 2.3 1.9 2.3 2.3 0 4.1-2.4 4.1-5.9 0-3.1-2.2-5.3-5.4-5.3-3.7 0-5.8 2.8-5.8 5.6 0 1.1.4 2.3 1 3 .1.1.1.2.1.4-.1.4-.3 1.3-.4 1.5-.1.3-.2.3-.5.2-1.9-.9-3.1-3.7-3.1-5.9 0-4.8 3.5-9.2 10.1-9.2 5.3 0 9.4 3.8 9.4 8.8 0 5.3-3.3 9.5-8 9.5-1.6 0-3-.8-3.5-1.8l-1 3.7c-.4 1.4-1.4 3.1-2.1 4.2 1.4.4 2.9.7 4.4.7 5.5 0 10-4.5 10-10S17.5 2 12 2z" fill="#336791"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">PostgreSQL</span>
+                <span class="card-tag">Relational DB</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #3ECF8E; --brand-glow: rgba(62, 207, 142, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M13.5 2L3 13.5h7.5L9 22l12-11.5h-7.5L13.5 2z" fill="#3ECF8E"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Supabase</span>
+                <span class="card-tag">Cloud Backend</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #38BDF8; --brand-glow: rgba(56, 189, 248, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 6c-2.4 0-3.9 1.2-4.5 3.6 1-.9 2.1-1.3 3.3-1.1 1 .2 1.7.9 2.5 1.7 1.3 1.3 2.7 2.8 5.7 2.8 2.4 0 3.9-1.2 4.5-3.6-1 .9-2.1 1.3-3.3 1.1-1-.2-1.7-.9-2.5-1.7-1.3-1.3-2.7-2.8-5.7-2.8zm-7 6c-2.4 0-3.9 1.2-4.5 3.6 1-.9 2.1-1.3 3.3-1.1 1 .2 1.7.9 2.5 1.7 1.3 1.3 2.7 2.8 5.7 2.8 2.4 0 3.9-1.2 4.5-3.6-1 .9-2.1 1.3-3.3 1.1-1-.2-1.7-.9-2.5-1.7-1.3-1.3-2.7-2.8-5.7-2.8z" fill="#38BDF8"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Tailwind CSS</span>
+                <span class="card-tag">Design System</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #FFFFFF; --brand-glow: rgba(255, 255, 255, 0.4);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2L3 21h18L12 2zm0 4.5l5.5 12h-11L12 6.5z" fill="#FFFFFF"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Three.js</span>
+                <span class="card-tag">3D WebGL</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #A0AEC0; --brand-glow: rgba(160, 174, 192, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M10 2v4.5L5.2 17.8c-.8 1.6.3 3.5 2.1 3.5h9.4c1.8 0 2.9-1.9 2.1-3.5L14 6.5V2h-4zm1.5 6.5l3.2 7.5H9.3l2.2-7.5z" fill="#E2E8F0"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Flask</span>
+                <span class="card-tag">Microservices</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #F7DF1E; --brand-glow: rgba(247, 223, 30, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><rect width="24" height="24" rx="4" fill="#F7DF1E"/><path d="M6 18.5l1.6-1c.4.7.8 1.2 1.5 1.2.8 0 1.2-.4 1.2-1.3v-6.4h2v6.4c0 2-1.2 3-3.1 3-1.6 0-2.6-.8-3.2-1.9zm8.4-.2l1.6-.9c.4.8 1.1 1.3 2 1.3 1 0 1.6-.5 1.6-1.1 0-.8-.6-1.1-1.8-1.6l-.6-.3c-1.8-.7-3-1.7-3-3.6 0-1.8 1.4-3.2 3.6-3.2 1.6 0 2.7.6 3.4 1.8l-1.5 1c-.4-.6-.9-.9-1.9-.9-.9 0-1.5.5-1.5 1 0 .7.5 1 1.6 1.4l.6.3c2.1.9 3.2 1.8 3.2 3.8 0 2.2-1.7 3.4-3.9 3.4-2.1 0-3.4-1.1-4-2.4z" fill="#000"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">JavaScript</span>
+                <span class="card-tag">Frontend & Node</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #EA2D2E; --brand-glow: rgba(234, 45, 46, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M8.7 18.5c2.3.2 4.6.2 6.8-.2.5-.1.8.2.7.7-.2.6-.9.8-1.6.9-2.4.3-4.9.3-7.3-.1-.5-.1-.7-.4-.5-.8.1-.4.5-.6.9-.5zm-1.2 2.5c3.2.3 6.4.2 9.6-.3.6-.1.9.2.9.7-.1.6-.7.8-1.4.9-3.4.4-6.8.4-10.2-.1-.7-.1-.9-.5-.7-.9.1-.3.4-.4.8-.3zm8-8.2c-.3 1.1-1.2 1.8-2.3 2.1-1.8.4-3.7.3-5.5-.2-.5-.1-.8-.4-.7-.9.1-.4.4-.6.9-.5 1.4.3 2.9.4 4.3.1.7-.1 1.4-.5 1.7-1.2.7-1.5-.1-3.2-.3-4.8-.1-.7.2-1.3.8-1.7 1 .8 1.7 2 1.8 3.3.1 1.3-.3 2.5-.7 3.8z" fill="#EA2D2E"/><path d="M12.8 2.2c-.6.8-.7 1.7-.3 2.6.4.8 1.1 1.4 1.5 2.2.6 1.1.5 2.4-.2 3.4-.2.3-.4.3-.6.1-.2-.2-.2-.4-.1-.7.4-.9.4-1.9 0-2.8-.5-.9-1.1-1.7-1.4-2.7-.4-1.1-.1-2.2.7-3.1.2-.2.4-.2.6 0 .2.2.1.4-.2 1z" fill="#5382A1"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Java</span>
+                <span class="card-tag">OOP & Backend</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #F05032; --brand-glow: rgba(240, 80, 50, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M21.7 10.5l-8.2-8.2c-.6-.6-1.6-.6-2.2 0L8.7 4.9l2.8 2.8c.6-.2 1.3-.1 1.8.4.5.5.6 1.3.4 1.9l2.7 2.7c.6-.2 1.4-.1 1.9.4.7.7.7 1.9 0 2.6-.7.7-1.9.7-2.6 0-.6-.6-.7-1.4-.3-2.1l-2.5-2.5v5.3c.2.2.3.4.3.7 0 1-.8 1.8-1.8 1.8s-1.8-.8-1.8-1.8c0-.7.4-1.3 1-1.6V9.1c-.6-.3-1-.9-1-1.6 0-.4.1-.7.3-1L7.1 3.9 2.3 8.7c-.6.6-.6 1.6 0 2.2l8.2 8.2c.6.6 1.6.6 2.2 0l8.9-8.9c.7-.6.7-1.6.1-2.2z" fill="#F05032"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">Git & GitHub</span>
+                <span class="card-tag">DevOps & CI</span>
+              </div>
+            </div>
+
+            <div class="tech-marquee-card" style="--brand-color: #2ED8A2; --brand-glow: rgba(46, 216, 162, 0.45);">
+              <div class="card-logo-box">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="#2ED8A2" stroke-width="2.5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="card-info">
+                <span class="card-name">LiveKit</span>
+                <span class="card-tag">Real-Time Audio</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+  </section>
+
+  <!-- ==================== EXPERIENCE ==================== -->
+  <section class="career-section section" id="experience">
+    <div class="section-inner">
+      <div class="career-header animate-on-scroll">
+        <div class="career-label">// CAREER</div>
+        <h2 class="career-title">Where I've worked</h2>
+        <p class="career-subtitle">Gaining real-world industry experience through impactful internships.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <!-- Python Project Intern (Right Side) -->
+        <div class="timeline-item timeline-right" data-animate="right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">MAY 2026 &#8212; PRESENT</span>
+            <h3 class="timeline-role">Python Project Intern &amp; Data &amp; Preprocessing Lead</h3>
+            <span class="timeline-company">Cybernaut Edtech</span>
+            <div class="timeline-status">
+              <span class="status-dot"></span> Remote &#8212; Active
+            </div>
+            <p class="timeline-desc">
+              Leading the Data &amp; Preprocessing pipeline for the Skin Disease Classification team.
+              Responsible for EDA, class balance analysis, and data augmentation on the HAM10000
+              dermoscopic image dataset. Full-stack curriculum: web scraping &#8594; ML &#8594; Flask/Django.
+            </p>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Python</span>
+              <span class="timeline-tag">TensorFlow</span>
+              <span class="timeline-tag">Keras</span>
+              <span class="timeline-tag">Flask</span>
+              <span class="timeline-tag">Data Augmentation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI/ML Intern (Left Side) -->
+        <div class="timeline-item timeline-left" data-animate="left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">APR 2026 &#8212; MAY 2026</span>
+            <h3 class="timeline-role">AI/ML Intern</h3>
+            <span class="timeline-company">Litz Tech</span>
+            <div class="timeline-badge-row">
+              <span class="timeline-badge">Remote</span>
+            </div>
+            <p class="timeline-desc">
+              Core ML workflows: data cleaning, model training, and evaluation using Python on
+              real-world datasets. Complete ML pipeline experience from raw data to deployed models.
+            </p>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Python</span>
+              <span class="timeline-tag">ML Pipelines</span>
+              <span class="timeline-tag">Data Cleaning</span>
+              <span class="timeline-tag">Model Evaluation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gradient -->
+  <div class="gradient-divider"></div>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section class="section" id="projects">
+    <div class="section-inner">
+      <div class="section-header-center animate-on-scroll">
+        <div class="section-label">// Work</div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">End-to-end AI/ML projects with real-world impact and measurable results.</p>
+      </div>
+
+      <div class="projects-showcase stagger">
+        <!-- MindPulse -->
+        <div class="project-card animate-on-scroll" id="project-mindpulse">
+          <div class="project-card-img">
+            <img src="assets/project-mindpulse.jpg" alt="MindPulse">
+            <span class="project-status-badge done">✓ Completed</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">MindPulse</h3>
+            <p class="project-card-desc">AI mental wellness platform with real-time facial emotion recognition using VGG19 CNN fine-tuned on FER2013, Gemini voice companion, mood history dashboards, and Supabase persistence.</p>
+            <div class="project-metrics-row">
+              <div class="project-metric"><span class="project-metric-val">84%</span><span class="project-metric-lbl">Accuracy</span></div>
+              <div class="project-metric"><span class="project-metric-val">VGG19</span><span class="project-metric-lbl">Model</span></div>
+              <div class="project-metric"><span class="project-metric-val">Solo</span><span class="project-metric-lbl">Full-Stack</span></div>
+            </div>
+            <div class="project-tech-wrap">
+              <span class="project-tech-chip">React 18</span>
+              <span class="project-tech-chip">Flask</span>
+              <span class="project-tech-chip">Supabase</span>
+              <span class="project-tech-chip">VGG19</span>
+              <span class="project-tech-chip">Gemini API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ShadowHunt -->
+        <div class="project-card animate-on-scroll" id="project-shadowhunt">
+          <div class="project-card-img">
+            <img src="assets/project-shadowhunt.jpg" alt="ShadowHunt">
+            <span class="project-status-badge done">✓ Completed</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">ShadowHunt</h3>
+            <p class="project-card-desc">Multi-modal deepfake detection supporting image, video, and audio inputs. CNN-based detection with 91%+ accuracy and Ethereum/IPFS blockchain watermarking for tamper-evident verification.</p>
+            <div class="project-metrics-row">
+              <div class="project-metric"><span class="project-metric-val">91%+</span><span class="project-metric-lbl">Detection</span></div>
+              <div class="project-metric"><span class="project-metric-val">Multi-Modal</span><span class="project-metric-lbl">Inputs</span></div>
+              <div class="project-metric"><span class="project-metric-val">Blockchain</span><span class="project-metric-lbl">Verified</span></div>
+            </div>
+            <div class="project-tech-wrap">
+              <span class="project-tech-chip">Python</span>
+              <span class="project-tech-chip">TensorFlow</span>
+              <span class="project-tech-chip">OpenCV</span>
+              <span class="project-tech-chip">Ethereum</span>
+              <span class="project-tech-chip">IPFS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SORA -->
+        <div class="project-card animate-on-scroll" id="project-sora">
+          <div class="project-card-img">
+            <img src="assets/project-sora.jpg" alt="SORA AI Agent">
+            <span class="project-status-badge wip">◉ In Progress</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">SORA AI Agent</h3>
+            <p class="project-card-desc">Voice-controlled Windows AI with real-time speech understanding, screen and camera analysis, and multi-step task automation. Claude + Gemini APIs with LiveKit and Whisper.</p>
+            <div class="project-metrics-row">
+              <div class="project-metric"><span class="project-metric-val">Real-Time</span><span class="project-metric-lbl">Voice</span></div>
+              <div class="project-metric"><span class="project-metric-val">Multi-Modal</span><span class="project-metric-lbl">Analysis</span></div>
+            </div>
+            <div class="project-tech-wrap">
+              <span class="project-tech-chip">Python</span>
+              <span class="project-tech-chip">Claude API</span>
+              <span class="project-tech-chip">Gemini API</span>
+              <span class="project-tech-chip">LiveKit</span>
+              <span class="project-tech-chip">Whisper</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skin Disease -->
+        <div class="project-card animate-on-scroll" id="project-skin">
+          <div class="project-card-img">
+            <img src="assets/project-skin-disease.jpg" alt="Skin Disease Classification">
+            <span class="project-status-badge active">◉ Active</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">Skin Disease Classification</h3>
+            <p class="project-card-desc">Team project at Cybernaut Edtech. Leading data & preprocessing — EDA, class balance analysis, data augmentation on HAM10000 dermoscopic images using TensorFlow and Keras.</p>
+            <div class="project-metrics-row">
+              <div class="project-metric"><span class="project-metric-val">HAM10000</span><span class="project-metric-lbl">Dataset</span></div>
+              <div class="project-metric"><span class="project-metric-val">Team Lead</span><span class="project-metric-lbl">Data Pipeline</span></div>
+            </div>
+            <div class="project-tech-wrap">
+              <span class="project-tech-chip">TensorFlow</span>
+              <span class="project-tech-chip">Keras</span>
+              <span class="project-tech-chip">CNN</span>
+              <span class="project-tech-chip">EDA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== EXTRA WORK / MORE PROJECTS ==================== -->
+      <div class="extra-work-header animate-on-scroll">
+        <div class="extra-work-header-left">
+          <h3 class="mini-projects-title">More Projects</h3>
+          <p class="extra-work-subtitle">Specialized architectures, research prototypes, and experimental systems.</p>
+        </div>
+        <div class="extra-nav-controls">
+          <button class="extra-nav-btn prev" id="extraPrevBtn" aria-label="Scroll left" title="Scroll left">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="extra-nav-btn next" id="extraNextBtn" aria-label="Scroll right" title="Scroll right">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div> <!-- Close section-inner for edge-to-edge marquee -->
+
+    <div class="extra-work-marquee-wrap animate-on-scroll" id="extraMarqueeWrap" aria-label="Extra work scrolling showcase">
+      <div class="extra-work-track scroll-right" id="extraWorkTrack">
+        
+        <!-- 1. Agentic RAG -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-agentic-rag.jpg" alt="Agentic RAG" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Agentic RAG</h4>
+            <p class="extra-card-desc">LangChain AgentExecutor, ChromaDB vector search, GPT-4o integration, React 18 SSE streaming frontend.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">FastAPI</span>
+              <span class="extra-tag">LangChain</span>
+              <span class="extra-tag">ChromaDB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Smart Shopping Cart -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-smart-cart.jpg" alt="Smart Shopping Cart" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Smart Shopping Cart</h4>
+            <p class="extra-card-desc">YOLOv8 item detection, HX711 IoT weight sensors, Razorpay/UPI Autopay for automated checkout.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">YOLOv8</span>
+              <span class="extra-tag">IoT</span>
+              <span class="extra-tag">Razorpay</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Sleep Quality Predictor -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-sleep-predictor.svg" alt="Sleep Quality Predictor" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Sleep Quality Predictor</h4>
+            <p class="extra-card-desc">ML model comparison with Logistic Regression, Random Forest, SVM on Kaggle dataset with React + Flask UI.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">Scikit-learn</span>
+              <span class="extra-tag">React</span>
+              <span class="extra-tag">Flask</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. JLPT Vocab Scheduler -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-jlpt-scheduler.svg" alt="JLPT Vocab Scheduler" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">JLPT Vocab Scheduler</h4>
+            <p class="extra-card-desc">RL-powered vocabulary scheduler with DQN, epsilon-greedy bandits, spaced repetition, and 3D Three.js frontend.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">DQN</span>
+              <span class="extra-tag">Three.js</span>
+              <span class="extra-tag">Supabase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Continuous Learning -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-continuous-learning.svg" alt="Continuous Learning" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Continuous Learning</h4>
+            <p class="extra-card-desc">Ongoing exploration in LLM architectures, agentic workflows, and cutting-edge computer vision research.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">LLM Apps</span>
+              <span class="extra-tag">Agentic AI</span>
+              <span class="extra-tag">Research</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= REPEAT FOR SEAMLESS INFINITE LOOP ================= -->
+        <!-- 1. Agentic RAG -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-agentic-rag.jpg" alt="Agentic RAG" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Agentic RAG</h4>
+            <p class="extra-card-desc">LangChain AgentExecutor, ChromaDB vector search, GPT-4o integration, React 18 SSE streaming frontend.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">FastAPI</span>
+              <span class="extra-tag">LangChain</span>
+              <span class="extra-tag">ChromaDB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Smart Shopping Cart -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-smart-cart.jpg" alt="Smart Shopping Cart" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Smart Shopping Cart</h4>
+            <p class="extra-card-desc">YOLOv8 item detection, HX711 IoT weight sensors, Razorpay/UPI Autopay for automated checkout.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">YOLOv8</span>
+              <span class="extra-tag">IoT</span>
+              <span class="extra-tag">Razorpay</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Sleep Quality Predictor -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-sleep-predictor.svg" alt="Sleep Quality Predictor" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Sleep Quality Predictor</h4>
+            <p class="extra-card-desc">ML model comparison with Logistic Regression, Random Forest, SVM on Kaggle dataset with React + Flask UI.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">Scikit-learn</span>
+              <span class="extra-tag">React</span>
+              <span class="extra-tag">Flask</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. JLPT Vocab Scheduler -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-jlpt-scheduler.svg" alt="JLPT Vocab Scheduler" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">JLPT Vocab Scheduler</h4>
+            <p class="extra-card-desc">RL-powered vocabulary scheduler with DQN, epsilon-greedy bandits, spaced repetition, and 3D Three.js frontend.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">DQN</span>
+              <span class="extra-tag">Three.js</span>
+              <span class="extra-tag">Supabase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Continuous Learning -->
+        <div class="extra-project-card">
+          <div class="extra-card-img-wrap">
+            <img src="assets/project-continuous-learning.svg" alt="Continuous Learning" loading="lazy">
+          </div>
+          <div class="extra-card-body">
+            <h4 class="extra-card-title">Continuous Learning</h4>
+            <p class="extra-card-desc">Ongoing exploration in LLM architectures, agentic workflows, and cutting-edge computer vision research.</p>
+            <div class="extra-card-tags">
+              <span class="extra-tag">LLM Apps</span>
+              <span class="extra-tag">Agentic AI</span>
+              <span class="extra-tag">Research</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ACHIEVEMENTS ==================== -->
+  <section class="section" id="achievements">
+    <div class="section-inner">
+      <div class="animate-on-scroll">
+        <div class="section-label">// Recognition</div>
+        <h2 class="section-title">Achievements</h2>
+        <p class="section-subtitle" style="margin-bottom: 48px;">Awards, certifications, and milestones along the way.</p>
+      </div>
+
+      <!-- ACHIEVEMENTS & CERTIFICATIONS DUAL 3D CLUSTER SHOWCASE -->
+      <div class="achievements-dual-grid">
+
+        <!-- LEFT COLUMN: AWARDS & HONORS (Code Relay & Best Supportive Student Clips) -->
+        <div class="achieve-col animate-on-scroll">
+          <div class="dual-col-header">
+            <div class="dual-col-label">// Awards & Recognition</div>
+            <h3 class="dual-col-title">Code Relay & Best Supportive Student</h3>
+            <p class="dual-col-subtitle">Stage ceremony clips, official certificates & podium honors</p>
+          </div>
+
+          <div class="dual-cluster-stage">
+            <!-- 1. Best Supportive Student Stage Ceremony -->
+            <div class="cluster-card achieve-card-1 open-cert-modal" data-cert="assets/award-supportive-stage.png" data-caption="NextGen Awards 2K26 — Best Supportive Student Trophy Presentation on Stage">
+              <div class="cluster-card-label">Trophy Ceremony</div>
+              <div class="cluster-card-tags">
+                <span class="hero-tag teal">Best Supportive</span>
+                <span class="hero-tag yellow">Trophy Award</span>
+              </div>
+              <div class="cluster-card-image">
+                <img src="assets/award-supportive-stage.png" alt="Best Supportive Student Trophy Ceremony" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 2. Code Relay Stage Photo -->
+            <div class="cluster-card achieve-card-2 open-cert-modal" data-cert="assets/award-coderelay-stage.jpg" data-caption="Code Relay 2K26 — II Prize Stage Award Ceremony | Department of AI & DS">
+              <div class="cluster-card-label">Stage Relay 2K26</div>
+              <div class="cluster-card-tags">
+                <span class="hero-tag blue">2nd Prize</span>
+                <span class="hero-tag emerald">Code Relay</span>
+              </div>
+              <div class="cluster-card-image">
+                <img src="assets/award-coderelay-stage.jpg" alt="Code Relay 2K26 Stage Award Ceremony" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 3. Code Relay Certificate -->
+            <div class="cluster-card achieve-card-3 open-cert-modal" data-cert="assets/award-coderelay-cert.jpg" data-caption="Code Relay 2K26 — Official II Prize Certificate | Mahendra Engineering College">
+              <div class="cluster-card-label">Code Relay Certificate</div>
+              <div class="cluster-card-image" style="padding-top: 4px;">
+                <img src="assets/award-coderelay-cert.jpg" alt="Code Relay 2K26 Certificate" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 4. Best Supportive Student Certificate -->
+            <div class="cluster-card achieve-card-4 open-cert-modal" data-cert="assets/award-supportive-cert.png" data-caption="NextGen Awards 2K26 — Best Supportive Student Official Certificate | Mahendra Engineering College">
+              <div class="cluster-card-label">Best Supportive Student Certificate</div>
+              <div class="cluster-card-image" style="padding-top: 4px;">
+                <img src="assets/award-supportive-cert.png" alt="Best Supportive Student Certificate" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: VERIFIED CERTIFICATIONS (Same 3D Cluster Effect) -->
+        <div class="achieve-col animate-on-scroll">
+          <div class="dual-col-header">
+            <div class="dual-col-label gold">// Verified Certifications</div>
+            <h3 class="dual-col-title">Language & Technical Credentials</h3>
+            <p class="dual-col-subtitle">Japanese language, machine learning & systems programming</p>
+          </div>
+
+          <div class="dual-cluster-stage">
+            <!-- 1. JLPT N4 Certificate -->
+            <div class="cluster-card cert-card-1 open-cert-modal" data-cert="assets/cert-jlpt-n4.jpg" data-caption="JLPT N4 Japanese-Language Proficiency Certificate | Japan Foundation & JEES">
+              <div class="cluster-card-label">JLPT N4 Japanese</div>
+              <div class="cluster-card-tags">
+                <span class="hero-tag teal">Japan Foundation</span>
+                <span class="hero-tag emerald">JLPT N4</span>
+              </div>
+              <div class="cluster-card-image">
+                <img src="assets/cert-jlpt-n4.jpg" alt="JLPT N4 Certificate" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 2. IBM Machine Learning with Python -->
+            <div class="cluster-card cert-card-2 open-cert-modal" data-cert="assets/cert-ibm-ml.png" data-caption="Machine Learning with Python Certificate | IBM Developer Skills Network & Cognitive Class">
+              <div class="cluster-card-label">IBM Machine Learning</div>
+              <div class="cluster-card-tags">
+                <span class="hero-tag blue">IBM</span>
+                <span class="hero-tag yellow">Cognitive Class</span>
+              </div>
+              <div class="cluster-card-image">
+                <img src="assets/cert-ibm-ml.png" alt="IBM Machine Learning with Python" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 3. Cybernaut Tech Trio Python (94%) -->
+            <div class="cluster-card cert-card-3 open-cert-modal" data-cert="assets/cert-python-tech-trio.png" data-caption="Cybernaut Tech Trio Course on Python — Score 94% | Cybernaut Edtech">
+              <div class="cluster-card-label">Tech Trio · Python</div>
+              <div class="cluster-card-tags">
+                <span class="hero-tag teal">Python</span>
+                <span class="hero-tag emerald">94% Score</span>
+              </div>
+              <div class="cluster-card-image">
+                <img src="assets/cert-python-tech-trio.png" alt="Cybernaut Tech Trio Python" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 4. Cybernaut Tech Trio Java (91%) -->
+            <div class="cluster-card cert-card-4 open-cert-modal" data-cert="assets/cert-java-tech-trio.png" data-caption="Cybernaut Tech Trio Course on Java — Score 91% | Cybernaut Edtech">
+              <div class="cluster-card-label">Tech Trio · Java</div>
+              <div class="cluster-card-tags">
+                <span class="hero-tag yellow">Java</span>
+                <span class="hero-tag blue">91% Score</span>
+              </div>
+              <div class="cluster-card-image">
+                <img src="assets/cert-java-tech-trio.png" alt="Cybernaut Tech Trio Java" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 5. Cybernaut Tech Trio C++ (77%) -->
+            <div class="cluster-card cert-card-5 open-cert-modal" data-cert="assets/cert-cpp-tech-trio.png" data-caption="Cybernaut Tech Trio Course on C++ — Score 77% | Cybernaut Edtech">
+              <div class="cluster-card-label">Tech Trio · C++</div>
+              <div class="cluster-card-tags">
+                <span class="hero-tag emerald">C++</span>
+                <span class="hero-tag teal">77% Score</span>
+              </div>
+              <div class="cluster-card-image">
+                <img src="assets/cert-cpp-tech-trio.png" alt="Cybernaut Tech Trio C++" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== CONTACT CTA ==================== -->
+  <section class="contact-cta-section" id="contact">
+    <div class="contact-cta-bg"></div>
+    <h2 class="contact-cta-title animate-on-scroll">Let's build<br>something</h2>
+    <p class="contact-cta-sub animate-on-scroll">Have a project, idea, or just want to connect? I'd love to hear from you.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info animate-on-scroll slide-left">
+        <h3>Reach out</h3>
+        <p>Always open to discussing new projects, creative ideas, or opportunities to be part of something amazing.</p>
+        <div class="contact-links">
+          <a href="mailto:akash.voffi@gmail.com" class="contact-link-item" id="contact-email-link">
+            <div class="contact-link-icon">📧</div>
+            <div class="contact-link-text"><span class="contact-link-label">Email</span><span class="contact-link-value">akash.voffi@gmail.com</span></div>
+          </a>
+          <a href="https://github.com/akashvoffi-design" target="_blank" rel="noopener" class="contact-link-item" id="contact-github-link">
+            <div class="contact-link-icon">⟐</div>
+            <div class="contact-link-text"><span class="contact-link-label">GitHub</span><span class="contact-link-value">akashvoffi-design</span></div>
+          </a>
+          <a href="https://linkedin.com/in/akash-tech-ai" target="_blank" rel="noopener" class="contact-link-item" id="contact-linkedin-link">
+            <div class="contact-link-icon">◈</div>
+            <div class="contact-link-text"><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">akash-tech-ai</span></div>
+          </a>
+          <div class="contact-link-item">
+            <div class="contact-link-icon">📍</div>
+            <div class="contact-link-text"><span class="contact-link-label">Location</span><span class="contact-link-value">Tamil Nadu, India</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll slide-right">
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Your Email</label>
+            <input type="email" id="contact-email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Your Message</label>
+            <textarea id="contact-message" placeholder="Tell me about your project or idea..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="contact-submit-btn">Send Message →</button>
+          <div class="form-message" id="form-message"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>Akash V</h3>
+        <p>Full-stack AI/ML engineer building intelligent systems across computer vision, NLP, and emotion recognition. Let's build the future together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://github.com/akashvoffi-design" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/akash-tech-ai" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:akash.voffi@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Akash V. Built with passion & code.</p>
+      <div class="footer-socials">
+        <a href="https://github.com/akashvoffi-design" target="_blank" rel="noopener" aria-label="GitHub">⟐</a>
+        <a href="https://linkedin.com/in/akash-tech-ai" target="_blank" rel="noopener" aria-label="LinkedIn">◈</a>
+        <a href="mailto:akash.voffi@gmail.com" aria-label="Email">✉</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Certificate & Stage Photo Lightbox Modal -->
+  <div class="cert-lightbox-modal" id="certLightboxModal" role="dialog" aria-modal="true" aria-label="Certificate Viewer">
+    <div class="cert-lightbox-content">
+      <button class="cert-lightbox-close" id="certLightboxClose" aria-label="Close modal">✕</button>
+      <img src="" alt="Award Document" class="cert-lightbox-img" id="certLightboxImg">
+      <div class="cert-lightbox-caption">
+        <span id="certLightboxCaptionText">Certificate</span>
+        <a href="" target="_blank" class="award-cert-btn" id="certLightboxExternalLink" style="padding: 6px 16px; font-size: 0.78rem;">Open Full Size ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
