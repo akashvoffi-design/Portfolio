@@ -1,0 +1,19 @@
+# Auto detect text files and normalize line endings to LF across all platforms
+* text=auto eol=lf
+
+# Web source files
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Binary media assets (preserve raw bytes)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.svg text eol=lf
+*.glb binary

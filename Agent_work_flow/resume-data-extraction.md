@@ -175,8 +175,8 @@ Impact:
 #### 3. SORA AI Agent - Voice-Controlled Windows AI
 ```
 Duration:           Jan 2026 – Present
-Type:               Solo Project, In Progress
-Status:             Active Development
+Type:               Solo Project, Completed
+Status:             Completed
 Technologies:       Python, Claude/Gemini API, LiveKit, Whisper
 
 Key Features:
@@ -195,7 +195,7 @@ Impact:
 ```
 Duration:           2026
 Type:               Team Project (Cybernaut Edtech Internship)
-Status:             Active
+Status:             Completed
 Technologies:       TensorFlow, Keras, CNN
 Team Role:          Data & Preprocessing Lead
 
@@ -225,6 +225,7 @@ Features:
 
 #### 6. Automated Smart Shopping Cart
 ```
+Status:             Ongoing (In Progress)
 Technologies:   YOLOv8, IoT Sensors, Razorpay
 Focus:          Computer Vision + IoT + E-commerce
 Features:
@@ -359,10 +360,13 @@ Organize by:
 
 ### For Projects Section
 Feature Top 4:
-1. MindPulse (emotion recognition, full-stack)
-2. ShadowHunt (deepfake detection, blockchain)
-3. SORA AI Agent (voice, automation)
-4. Skin Disease Classification (current, team)
+1. MindPulse (emotion recognition, full-stack) — Completed
+2. ShadowHunt (deepfake detection, blockchain) — Completed
+3. SORA AI Agent (voice, automation) — Completed
+4. Skin Disease Classification (team) — Completed
+
+Ongoing Project:
+- Automated Smart Shopping Cart (Computer Vision + IoT) — In Progress / Ongoing
 
 Show Additional 5 in secondary section
 

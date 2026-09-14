@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    AKASH V — PORTFOLIO DESIGN SYSTEM v2
    Narrative / Storytelling / Scattered-Image
    Inspired by Artem Astakhov's portfolio
@@ -230,10 +230,30 @@ a {
   overflow: hidden;
 }
 
-.hero-canvas {
+.hero-canvas,
+.dot-field-container {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
   z-index: 0;
+}
+
+.dot-field-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dot-field-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 }
 
@@ -693,7 +713,28 @@ a {
 /* Scattered image collage */
 .story-images {
   position: relative;
-  height: 450px;
+  height: 490px;
+}
+
+/* Vertical Japanese Typography Accent Behind Images */
+.story-vertical-kanji {
+  position: absolute;
+  top: -100px;
+  right: 25px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(3.2rem, 4.6vw, 4.3rem);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  color: var(--text-white);
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.88;
+  filter: none;
 }
 
 .story-float-img {
@@ -714,6 +755,168 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ==================== 3D PHYSICS LANYARD ID BADGE ==================== */
+.lanyard-container {
+  position: absolute;
+  top: -195px;
+  left: 20px;
+  width: 320px;
+  height: 620px;
+  z-index: 10;
+  perspective: 1200px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lanyard-strap-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 2;
+}
+
+.lanyard-strap-path {
+  fill: none;
+  stroke: url(#lanyardStrapGrad);
+  stroke-width: 15px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.5));
+}
+
+.lanyard-card-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 292px;
+  pointer-events: auto;
+  cursor: grab;
+  transform-origin: 50% 0px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 3;
+  touch-action: none;
+}
+
+.lanyard-card-wrap.is-dragging {
+  cursor: grabbing !important;
+}
+
+/* Metallic Clasp & Swivel Hook */
+.lanyard-clip {
+  position: relative;
+  width: 26px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.clip-band-crimp {
+  width: 22px;
+  height: 11px;
+  background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.clip-swivel-loop {
+  width: 14px;
+  height: 12px;
+  border: 2.5px solid #cbd5e1;
+  border-radius: 50%;
+  margin-top: -2px;
+  background: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.clip-carabiner-hook {
+  width: 18px;
+  height: 19px;
+  border: 2.5px solid #cbd5e1;
+  border-radius: 50% 50% 30% 30%;
+  margin-top: -3px;
+  background: transparent;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* The ID Card Body — Pure Photo Badge (Enlarged) */
+.lanyard-card {
+  position: relative;
+  width: 292px;
+  height: 382px;
+  background: linear-gradient(150deg, rgba(22, 28, 42, 0.96) 0%, rgba(10, 14, 23, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 22px;
+  padding: 12px 12px 12px;
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
+    0 24px 50px -8px rgba(0, 0, 0, 0.8),
+    0 8px 18px -4px rgba(0, 0, 0, 0.5);
+  margin-top: -7px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.lanyard-card:hover {
+  border-color: rgba(78, 205, 196, 0.55);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
+    0 30px 60px -10px rgba(0, 0, 0, 0.88);
+}
+
+/* Punched Oval Slot Hole */
+.card-slot-hole {
+  width: 38px;
+  height: 8px;
+  background: #06090e;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  margin: 0 auto 9px;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Card Photo Frame — Fills the Entire Card */
+.card-photo-frame {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 17px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #090d16;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  pointer-events: none;
+}
+
+.card-photo-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 /* About Metrics Row & Number Scrolling Odometer */
@@ -1034,20 +1237,6 @@ a {
   padding: 100px 48px;
 }
 
-/* Subtle ambient backdrop aura inside the section */
-.career-section::before {
-  content: '';
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 700px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(78, 205, 196, 0.05) 0%, rgba(45, 212, 168, 0.02) 40%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
 /* Section Header */
 .career-header {
   text-align: center;
@@ -1165,26 +1354,52 @@ a {
   }
 }
 
-/* Cards (Liquid Glass Design System) */
+/* Cards (iPhone Glassy Effect Design System) */
 .timeline-card {
-  width: 380px;
-  background: var(--bg-card);
-  background-color: rgba(13, 17, 26, 0.75);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(78, 205, 196, 0.22);
-  border-radius: var(--radius);
-  padding: 30px 28px;
+  width: 390px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(18, 24, 38, 0.45) 100%), rgba(10, 14, 23, 0.65);
+  backdrop-filter: blur(30px) saturate(190%) contrast(105%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 26px;
+  padding: 32px 30px;
   position: relative;
-  box-shadow: var(--glass-shadow);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35),
+    0 24px 50px -10px rgba(0, 0, 0, 0.75),
+    0 8px 20px -4px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease;
+}
+
+/* iPhone Glass Specular Surface Reflection */
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 65%, transparent 100%);
+  border-radius: 26px 26px 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timeline-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .timeline-card:hover {
-  background: var(--bg-card-hover);
-  background-color: rgba(18, 24, 38, 0.85);
-  border-color: rgba(78, 205, 196, 0.55);
-  box-shadow: var(--glass-shadow-hover);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 40%, rgba(22, 32, 50, 0.55) 100%), rgba(12, 18, 30, 0.72);
+  border-color: rgba(255, 255, 255, 0.38);
+  box-shadow: 
+    inset 0 2px 1.5px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
+    0 32px 64px -12px rgba(0, 0, 0, 0.82),
+    0 12px 24px -4px rgba(0, 0, 0, 0.5);
 }
 
 /* RIGHT card positioning */
@@ -1193,7 +1408,7 @@ a {
 }
 
 .timeline-right:hover .timeline-card {
-  transform: translateX(6px) translateY(-3px);
+  transform: translateX(8px) translateY(-4px) scale(1.015);
 }
 
 /* LEFT card positioning */
@@ -1207,7 +1422,7 @@ a {
 }
 
 .timeline-left:hover .timeline-card {
-  transform: translateX(-6px) translateY(-3px);
+  transform: translateX(-8px) translateY(-4px) scale(1.015);
 }
 
 /* Card Content Typography & Badges */
@@ -1244,15 +1459,18 @@ a {
 .timeline-status {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--accent-teal);
-  background: rgba(78, 205, 196, 0.08);
-  border: 1px solid rgba(78, 205, 196, 0.22);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50px;
-  padding: 4px 14px;
+  padding: 5px 15px;
   margin-bottom: 16px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .status-dot {
@@ -1278,12 +1496,15 @@ a {
 .timeline-badge {
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--accent-teal);
-  background: rgba(78, 205, 196, 0.08);
-  border: 1px solid rgba(78, 205, 196, 0.22);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50px;
-  padding: 4px 14px;
+  padding: 5px 15px;
   font-weight: 600;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .timeline-desc {
@@ -1303,19 +1524,24 @@ a {
 .timeline-tag {
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--accent-teal);
-  background: rgba(78, 205, 196, 0.07);
-  border: 1px solid rgba(78, 205, 196, 0.18);
-  padding: 5px 13px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 14px;
   border-radius: 50px;
   letter-spacing: 0.3px;
-  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.22);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .timeline-tag:hover {
-  background: rgba(78, 205, 196, 0.16);
-  border-color: rgba(78, 205, 196, 0.45);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
 }
 
 /* ---- Scroll Animation (Slide-in + Fade) ---- */
@@ -2719,7 +2945,25 @@ a {
   }
 
   .story-images {
-    height: 350px;
+    height: 420px;
+  }
+
+  .story-vertical-kanji {
+    font-size: 2.6rem;
+    right: 8px;
+    top: -40px;
+    opacity: 0.9;
+  }
+
+  .lanyard-container {
+    width: 270px;
+    left: 10px;
+  }
+
+  .lanyard-card-wrap,
+  .lanyard-card {
+    width: 250px;
+    height: 330px;
   }
 
   .projects-showcase {

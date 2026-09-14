@@ -832,3 +832,569 @@ function initHeroNameScroll() {
 
   timelineItems.forEach((item) => observer.observe(item));
 })();
+
+
+/* ==========================================================================
+   DOT FIELD INTERACTIVE CANVAS ANIMATION (React-Bits DotField Port)
+   ========================================================================== */
+function initDotField(container, options = {}) {
+  if (!container) return;
+
+  const config = {
+    dotRadius: options.dotRadius ?? 1.5,
+    dotSpacing: options.dotSpacing ?? 14,
+    cursorRadius: options.cursorRadius ?? 500,
+    cursorForce: options.cursorForce ?? 0.1,
+    bulgeOnly: options.bulgeOnly !== undefined ? options.bulgeOnly : true,
+    bulgeStrength: options.bulgeStrength ?? 67,
+    glowRadius: options.glowRadius ?? 0,
+    cursorGlow: options.cursorGlow ?? false,
+    sparkle: options.sparkle ?? false,
+    waveAmplitude: options.waveAmplitude ?? 0,
+    gradientFrom: options.gradientFrom || '#A855F7',
+    gradientTo: options.gradientTo || '#B497CF',
+    glowColor: options.glowColor || 'transparent',
+  };
+
+  const TWO_PI = Math.PI * 2;
+  const canvas = container.querySelector('canvas') || document.createElement('canvas');
+  if (!canvas.parentElement) container.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return;
+
+  // Only create SVG Glow filter overlay if cursorGlow is explicitly enabled with radius > 0
+  let svg = container.querySelector('svg');
+  let glowCircle = null;
+
+  if (config.cursorGlow && config.glowRadius > 0) {
+    const glowId = 'dot-field-glow-' + Math.random().toString(36).slice(2, 9);
+    if (!svg) {
+      svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'dot-field-svg');
+      svg.style.cssText = 'position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;';
+
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      const radGrad = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+      radGrad.setAttribute('id', glowId);
+
+      const stop0 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stop0.setAttribute('offset', '0%');
+      stop0.setAttribute('stop-color', config.glowColor);
+
+      const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stop1.setAttribute('offset', '100%');
+      stop1.setAttribute('stop-color', 'transparent');
+
+      radGrad.appendChild(stop0);
+      radGrad.appendChild(stop1);
+      defs.appendChild(radGrad);
+      svg.appendChild(defs);
+
+      glowCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      glowCircle.setAttribute('cx', '-9999');
+      glowCircle.setAttribute('cy', '-9999');
+      glowCircle.setAttribute('r', String(config.glowRadius));
+      glowCircle.setAttribute('fill', `url(#${glowId})`);
+      glowCircle.style.cssText = 'opacity: 0; will-change: opacity;';
+      svg.appendChild(glowCircle);
+
+      container.appendChild(svg);
+    } else {
+      glowCircle = svg.querySelector('circle');
+    }
+  } else if (svg) {
+    svg.remove();
+  }
+
+  let dotsList = [];
+  let mouse = { x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 };
+  let size = { w: 0, h: 0, offsetX: 0, offsetY: 0 };
+  let glowOpacity = 0;
+  let engagement = 0;
+  let rafId = null;
+  let isVisible = true;
+  let frameCount = 0;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function buildDots(w, h) {
+    const step = config.dotRadius + config.dotSpacing;
+    const cols = Math.floor(w / step);
+    const rows = Math.floor(h / step);
+    const padX = (w % step) / 2;
+    const padY = (h % step) / 2;
+    const dots = new Array(rows * cols);
+    let idx = 0;
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const ax = padX + col * step + step / 2;
+        const ay = padY + row * step + step / 2;
+        dots[idx++] = { ax, ay, sx: ax, sy: ay, vx: 0, vy: 0, x: ax, y: ay };
+      }
+    }
+    dotsList = dots;
+  }
+
+  function doResize() {
+    const rect = container.getBoundingClientRect();
+    const w = rect.width || container.offsetWidth || window.innerWidth;
+    const h = rect.height || container.offsetHeight || window.innerHeight;
+
+    if (w <= 0 || h <= 0) return;
+
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = `${w}px`;
+    canvas.style.height = `${h}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    size.w = w;
+    size.h = h;
+    size.offsetX = rect.left + window.scrollX;
+    size.offsetY = rect.top + window.scrollY;
+
+    buildDots(w, h);
+  }
+
+  let resizeTimer;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(doResize, 100);
+  }
+
+  function onMouseMove(e) {
+    const rect = container.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    if (mx >= -config.cursorRadius && mx <= rect.width + config.cursorRadius &&
+        my >= -config.cursorRadius && my <= rect.height + config.cursorRadius) {
+      mouse.x = mx;
+      mouse.y = my;
+    } else {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    }
+  }
+
+  function updateMouseSpeed() {
+    const dx = mouse.prevX - mouse.x;
+    const dy = mouse.prevY - mouse.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    mouse.speed += (dist - mouse.speed) * 0.5;
+    if (mouse.speed < 0.001) mouse.speed = 0;
+    mouse.prevX = mouse.x;
+    mouse.prevY = mouse.y;
+  }
+
+  setInterval(updateMouseSpeed, 20);
+
+  function tick() {
+    if (!isVisible) {
+      rafId = requestAnimationFrame(tick);
+      return;
+    }
+
+    frameCount++;
+    const { w, h } = size;
+    if (w === 0 || h === 0 || !dotsList.length) {
+      rafId = requestAnimationFrame(tick);
+      return;
+    }
+
+    const len = dotsList.length;
+    const t = frameCount * 0.02;
+
+    const isInside = mouse.x >= 0 && mouse.x <= w && mouse.y >= 0 && mouse.y <= h;
+    const targetEngagement = isInside ? Math.min(Math.max(mouse.speed / 4, 0.42), 1) : Math.min(mouse.speed / 5, 1);
+    
+    engagement += (targetEngagement - engagement) * 0.06;
+    if (engagement < 0.001) engagement = 0;
+    const eng = engagement;
+
+    glowOpacity += (eng - glowOpacity) * 0.08;
+
+    if (glowCircle) {
+      glowCircle.setAttribute('cx', String(mouse.x));
+      glowCircle.setAttribute('cy', String(mouse.y));
+      glowCircle.style.opacity = String(glowOpacity);
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, config.gradientFrom);
+    grad.addColorStop(1, config.gradientTo);
+    ctx.fillStyle = grad;
+
+    const cr = config.cursorRadius;
+    const crSq = cr * cr;
+    const rad = config.dotRadius / 2;
+    const isBulge = config.bulgeOnly;
+
+    ctx.beginPath();
+
+    for (let i = 0; i < len; i++) {
+      const d = dotsList[i];
+      const dx = mouse.x - d.ax;
+      const dy = mouse.y - d.ay;
+      const distSq = dx * dx + dy * dy;
+
+      if (distSq < crSq && eng > 0.01) {
+        const dist = Math.sqrt(distSq);
+        if (isBulge) {
+          const tVal = 1 - dist / cr;
+          const push = tVal * tVal * config.bulgeStrength * eng;
+          const angle = Math.atan2(dy, dx);
+          d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15;
+          d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
+        } else {
+          const angle = Math.atan2(dy, dx);
+          const move = (500 / dist) * (mouse.speed * config.cursorForce);
+          d.vx += Math.cos(angle) * -move;
+          d.vy += Math.sin(angle) * -move;
+        }
+      } else if (isBulge) {
+        d.sx += (d.ax - d.sx) * 0.1;
+        d.sy += (d.ay - d.sy) * 0.1;
+      }
+
+      if (!isBulge) {
+        d.vx *= 0.9;
+        d.vy *= 0.9;
+        d.x = d.ax + d.vx;
+        d.y = d.ay + d.vy;
+        d.sx += (d.x - d.sx) * 0.1;
+        d.sy += (d.y - d.sy) * 0.1;
+      }
+
+      let drawX = d.sx;
+      let drawY = d.sy;
+
+      if (config.waveAmplitude > 0) {
+        drawY += Math.sin(d.ax * 0.03 + t) * config.waveAmplitude;
+        drawX += Math.cos(d.ay * 0.03 + t * 0.7) * config.waveAmplitude * 0.5;
+      }
+
+      if (config.sparkle) {
+        const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
+        if ((hash % 100) < 3) {
+          ctx.moveTo(drawX + rad * 1.8, drawY);
+          ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI);
+        } else {
+          ctx.moveTo(drawX + rad, drawY);
+          ctx.arc(drawX, drawY, rad, 0, TWO_PI);
+        }
+      } else {
+        ctx.moveTo(drawX + rad, drawY);
+        ctx.arc(drawX, drawY, rad, 0, TWO_PI);
+      }
+    }
+
+    ctx.fill();
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // Optimize performance: pause rendering when scrolled out of view
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+      });
+    }, { threshold: 0.02 });
+    observer.observe(container);
+  }
+
+  doResize();
+  window.addEventListener('resize', onResize, { passive: true });
+  window.addEventListener('mousemove', onMouseMove, { passive: true });
+  rafId = requestAnimationFrame(tick);
+}
+
+// Initialize DotField instances (with zero cursor glow)
+function initAllDotFields() {
+  // 1. Where I've worked section (Experience)
+  const expContainer = document.getElementById('experienceDotField');
+  if (expContainer) {
+    initDotField(expContainer, {
+      dotRadius: 1.5,
+      dotSpacing: 14,
+      bulgeStrength: 67,
+      glowRadius: 0,
+      cursorGlow: false,
+      cursorRadius: 500,
+      cursorForce: 0.1,
+      bulgeOnly: true,
+      sparkle: false,
+      waveAmplitude: 0,
+      gradientFrom: 'rgba(168, 85, 247, 0.4)',
+      gradientTo: 'rgba(180, 151, 207, 0.28)',
+      glowColor: 'transparent',
+    });
+  }
+
+  // 2. First Page (Hero) section
+  const heroContainer = document.getElementById('heroDotField');
+  if (heroContainer) {
+    initDotField(heroContainer, {
+      dotRadius: 1.5,
+      dotSpacing: 14,
+      bulgeStrength: 67,
+      glowRadius: 0,
+      cursorGlow: false,
+      cursorRadius: 500,
+      cursorForce: 0.1,
+      bulgeOnly: true,
+      sparkle: false,
+      waveAmplitude: 0,
+      gradientFrom: 'rgba(168, 85, 247, 0.4)',
+      gradientTo: 'rgba(180, 151, 207, 0.28)',
+      glowColor: 'transparent',
+    });
+  }
+}
+
+
+/* ==========================================================================
+   3D PHYSICS LANYARD ID CARD ANIMATION (Verlet Rope & Pendulum Engine)
+   ========================================================================== */
+function initLanyard() {
+  const container = document.getElementById('lanyardContainer');
+  const cardWrap = document.getElementById('lanyardCardWrap');
+  const strapPath = document.getElementById('lanyardStrapPath');
+  if (!container || !cardWrap || !strapPath) return;
+
+  // Physics parameters
+  const gravity = 1800; // px/s^2
+  const damping = 0.965; // realistic air/rope damping
+  const segmentLength = 12; // shortened rest length to place card higher up
+  const numSegments = 4; // 5 nodes total: N0 (pinned) -> N1 -> N2 -> N3 -> N4 (clip/card)
+  const dt = 1 / 60;
+
+  // Anchor point (top center of container)
+  let anchorX = 160;
+  let anchorY = 0;
+
+  // Initialize Verlet nodes
+  const nodes = [];
+  for (let i = 0; i <= numSegments; i++) {
+    const y = anchorY + i * segmentLength;
+    nodes.push({
+      x: anchorX,
+      y: y,
+      oldX: anchorX,
+      oldY: y,
+    });
+  }
+
+  // Card dynamics & state
+  let cardRotZ = 0;
+  let cardRotY = 0;
+  let cardRotX = 0;
+  let isDragging = false;
+  let hasInteracted = false;
+  let dragOffsetX = 0;
+  let dragOffsetY = 0;
+  let targetPointerX = anchorX;
+  let targetPointerY = anchorY + numSegments * segmentLength;
+  let isVisible = true;
+  let rafId = null;
+
+  // Update anchor if window resized
+  function updateAnchor() {
+    const w = container.offsetWidth || 320;
+    anchorX = Math.round(w * 0.5);
+    nodes[0].x = anchorX;
+    nodes[0].y = anchorY;
+  }
+  updateAnchor();
+  window.addEventListener('resize', updateAnchor, { passive: true });
+
+  // Pointer dragging tracking
+  cardWrap.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    isDragging = true;
+    hasInteracted = true;
+    cardWrap.classList.add('is-dragging', 'has-interacted');
+    cardWrap.setPointerCapture(e.pointerId);
+
+    const rect = container.getBoundingClientRect();
+    const endNode = nodes[nodes.length - 1];
+    dragOffsetX = (e.clientX - rect.left) - endNode.x;
+    dragOffsetY = (e.clientY - rect.top) - endNode.y;
+    targetPointerX = (e.clientX - rect.left) - dragOffsetX;
+    targetPointerY = (e.clientY - rect.top) - dragOffsetY;
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const rect = container.getBoundingClientRect();
+    targetPointerX = (e.clientX - rect.left) - dragOffsetX;
+    targetPointerY = (e.clientY - rect.top) - dragOffsetY;
+  }, { passive: true });
+
+  const onPointerRelease = (e) => {
+    if (isDragging) {
+      isDragging = false;
+      cardWrap.classList.remove('is-dragging');
+      try { cardWrap.releasePointerCapture(e.pointerId); } catch (_) {}
+    }
+  };
+
+  window.addEventListener('pointerup', onPointerRelease);
+  window.addEventListener('pointercancel', onPointerRelease);
+
+  // Gentle 3D magnetic hover tilt when not dragging
+  container.addEventListener('pointermove', (e) => {
+    if (isDragging) return;
+    const rect = container.getBoundingClientRect();
+    const rx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+    const ry = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+    cardRotY += (rx * 12 - cardRotY) * 0.1;
+    cardRotX += (-ry * 10 - cardRotX) * 0.1;
+  }, { passive: true });
+
+  container.addEventListener('pointerleave', () => {
+    if (!isDragging) {
+      cardRotY += (0 - cardRotY) * 0.08;
+      cardRotX += (0 - cardRotX) * 0.08;
+    }
+  });
+
+  let time = 0;
+
+  function tick() {
+    if (!isVisible) {
+      rafId = requestAnimationFrame(tick);
+      return;
+    }
+
+    time += dt;
+    const lastIdx = nodes.length - 1;
+    const endNode = nodes[lastIdx];
+
+    // Dragging physics
+    if (isDragging) {
+      const vx = (targetPointerX - endNode.x) * 0.45;
+      const vy = (targetPointerY - endNode.y) * 0.45;
+      endNode.oldX = endNode.x;
+      endNode.oldY = endNode.y;
+      endNode.x += vx;
+      endNode.y += vy;
+
+      // 3D tilt follows drag speed
+      const targetTiltY = Math.max(-32, Math.min(32, vx * 1.8));
+      const targetTiltX = Math.max(-24, Math.min(24, -vy * 1.5));
+      cardRotY += (targetTiltY - cardRotY) * 0.2;
+      cardRotX += (targetTiltX - cardRotX) * 0.2;
+    } else {
+      // Verlet integration for internal rope nodes + end node
+      for (let i = 1; i <= lastIdx; i++) {
+        const n = nodes[i];
+        const vx = (n.x - n.oldX) * damping;
+        const vy = (n.y - n.oldY) * damping;
+        n.oldX = n.x;
+        n.oldY = n.y;
+        n.x += vx;
+        n.y += vy + gravity * (dt * dt);
+      }
+
+      // Subtle ambient air sway
+      if (!hasInteracted) {
+        nodes[lastIdx].x += Math.sin(time * 1.2) * 0.03;
+      }
+    }
+
+    // Distance constraints relaxation passes (8 passes for sturdy, non-stretching rope)
+    for (let pass = 0; pass < 8; pass++) {
+      // Node 0 is pinned to the anchor
+      nodes[0].x = anchorX;
+      nodes[0].y = anchorY;
+
+      for (let i = 0; i < lastIdx; i++) {
+        const pA = nodes[i];
+        const pB = nodes[i + 1];
+        const dx = pB.x - pA.x;
+        const dy = pB.y - pA.y;
+        const dist = Math.hypot(dx, dy) || 0.001;
+        const diff = (dist - segmentLength) / dist;
+
+        if (i === 0) {
+          pB.x -= dx * diff;
+          pB.y -= dy * diff;
+        } else if (i + 1 === lastIdx && isDragging) {
+          pA.x += dx * diff;
+          pA.y += dy * diff;
+        } else {
+          pA.x += dx * diff * 0.5;
+          pA.y += dy * diff * 0.5;
+          pB.x -= dx * diff * 0.5;
+          pB.y -= dy * diff * 0.5;
+        }
+      }
+    }
+
+    // Calculate rotation of the card based on the angle of the last rope segment
+    const pPrev = nodes[lastIdx - 1];
+    const angleRad = Math.atan2(endNode.x - pPrev.x, endNode.y - pPrev.y);
+    const targetRotZ = (angleRad * (180 / Math.PI));
+    
+    // Natural angular inertia and spring response
+    cardRotZ += (targetRotZ - cardRotZ) * (isDragging ? 0.25 : 0.15);
+
+    // Natural tilt damping back to upright in rest
+    if (!isDragging) {
+      const vx = endNode.x - endNode.oldX;
+      const vy = endNode.y - endNode.oldY;
+      const targetRotY = Math.max(-28, Math.min(28, vx * 1.2));
+      const targetRotX = Math.max(-20, Math.min(20, -vy * 1.0));
+      cardRotY += (targetRotY - cardRotY) * 0.1;
+      cardRotX += (targetRotX - cardRotX) * 0.1;
+    }
+
+    // Build smooth SVG Catmull-Rom/Bezier curve for the lanyard strap
+    let pathD = `M ${nodes[0].x.toFixed(1)} ${nodes[0].y.toFixed(1)}`;
+    for (let i = 0; i < lastIdx; i++) {
+      const pCurrent = nodes[i];
+      const pNext = nodes[i + 1];
+      const mx = (pCurrent.x + pNext.x) / 2;
+      const my = (pCurrent.y + pNext.y) / 2;
+      pathD += ` Q ${pCurrent.x.toFixed(1)} ${pCurrent.y.toFixed(1)}, ${mx.toFixed(1)} ${my.toFixed(1)}`;
+    }
+    pathD += ` L ${endNode.x.toFixed(1)} ${endNode.y.toFixed(1)}`;
+    strapPath.setAttribute('d', pathD);
+
+    // Transform the 3D card wrap dynamically centered on the rope end node
+    const cardHalfWidth = (cardWrap.offsetWidth ? cardWrap.offsetWidth * 0.5 : 146);
+    cardWrap.style.transform = `translate3d(${(endNode.x - cardHalfWidth).toFixed(1)}px, ${endNode.y.toFixed(1)}px, 0px) rotateZ(${cardRotZ.toFixed(2)}deg) rotateY(${cardRotY.toFixed(2)}deg) rotateX(${cardRotX.toFixed(2)}deg)`;
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // IntersectionObserver to pause rendering when offscreen
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+      });
+    }, { threshold: 0.05 });
+    observer.observe(container);
+  }
+
+  rafId = requestAnimationFrame(tick);
+}
+
+function initAllComponents() {
+  initAllDotFields();
+  initLanyard();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAllComponents);
+} else {
+  initAllComponents();
+}
+
+

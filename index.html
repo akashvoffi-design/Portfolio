@@ -46,7 +46,9 @@
 
   <!-- ==================== HERO ==================== -->
   <section class="hero" id="hero">
-    <canvas class="hero-canvas" id="hero-particles"></canvas>
+    <div class="dot-field-container" id="heroDotField">
+      <canvas class="dot-field-canvas"></canvas>
+    </div>
 
     <div class="hero-content">
       <div class="hero-text">
@@ -93,7 +95,7 @@
         <div class="hero-card hero-card-3">
           <div class="hero-card-label">Current work</div>
           <div class="hero-card-image">
-            <img src="assets/project-sora.jpg" alt="SORA AI Agent">
+            <img src="assets/project-smart-cart.jpg" alt="Smart Shopping Cart">
           </div>
         </div>
       </div>
@@ -152,13 +154,49 @@
 
         <!-- Scattered images -->
         <div class="story-images">
-          <div class="story-float-img" style="width: 260px; height: 320px; top: 0; left: 40px; transform: rotate(-5deg);">
-            <img src="assets/profile-photo.png" alt="Akash V" style="object-position: center top;">
+          <!-- Vertical Japanese Accent: 自己紹介 (Self-Introduction) -->
+          <div class="story-vertical-kanji" aria-hidden="true">自己紹介</div>
+
+          <!-- 3D Interactive Lanyard ID Badge for Akash V -->
+          <div class="lanyard-container" id="lanyardContainer" aria-label="Interactive ID Badge — Drag to swing">
+            <svg class="lanyard-strap-svg" id="lanyardSvg">
+              <defs>
+                <linearGradient id="lanyardStrapGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#0f172a"/>
+                  <stop offset="35%" stop-color="#1e293b"/>
+                  <stop offset="50%" stop-color="#334155"/>
+                  <stop offset="65%" stop-color="#1e293b"/>
+                  <stop offset="100%" stop-color="#0f172a"/>
+                </linearGradient>
+              </defs>
+              <path class="lanyard-strap-path" id="lanyardStrapPath" d="" />
+            </svg>
+
+            <div class="lanyard-card-wrap" id="lanyardCardWrap">
+              <!-- Metallic Clasp & Swivel Hook -->
+              <div class="lanyard-clip" id="lanyardClip">
+                <div class="clip-band-crimp"></div>
+                <div class="clip-swivel-loop"></div>
+                <div class="clip-carabiner-hook"></div>
+              </div>
+
+              <!-- Hanging 3D ID Badge Card -->
+              <div class="lanyard-card" id="lanyardCard">
+                <!-- Slot Hole punched at top -->
+                <div class="card-slot-hole"></div>
+
+                <!-- Photo Frame with Profile Photo -->
+                <div class="card-photo-frame">
+                  <img src="assets/profile-photo.png" alt="Akash V" class="card-photo-img" draggable="false">
+                  <div class="card-photo-glare"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="story-float-img" style="width: 180px; height: 140px; top: 200px; right: 20px; transform: rotate(6deg);">
+          <div class="story-float-img" style="width: 220px; height: 165px; top: 250px; right: 15px; transform: rotate(5deg);">
             <img src="assets/project-shadowhunt.jpg" alt="ShadowHunt project">
           </div>
-          <div class="story-float-img" style="width: 160px; height: 120px; bottom: 0; left: 10px; transform: rotate(3deg);">
+          <div class="story-float-img" style="width: 195px; height: 145px; bottom: -15px; left: 0px; transform: rotate(-3deg);">
             <img src="assets/project-skin-disease.jpg" alt="Skin Disease project">
           </div>
         </div>
@@ -706,6 +744,9 @@
 
   <!-- ==================== EXPERIENCE ==================== -->
   <section class="career-section section" id="experience">
+    <div class="dot-field-container" id="experienceDotField">
+      <canvas class="dot-field-canvas"></canvas>
+    </div>
     <div class="section-inner">
       <div class="career-header animate-on-scroll">
         <div class="career-label">// CAREER</div>
@@ -832,7 +873,7 @@
         <div class="project-card animate-on-scroll" id="project-sora">
           <div class="project-card-img">
             <img src="assets/project-sora.jpg" alt="SORA AI Agent">
-            <span class="project-status-badge wip">◉ In Progress</span>
+            <span class="project-status-badge done">✓ Completed</span>
           </div>
           <div class="project-card-body">
             <h3 class="project-card-name">SORA AI Agent</h3>
@@ -855,7 +896,7 @@
         <div class="project-card animate-on-scroll" id="project-skin">
           <div class="project-card-img">
             <img src="assets/project-skin-disease.jpg" alt="Skin Disease Classification">
-            <span class="project-status-badge active">◉ Active</span>
+            <span class="project-status-badge done">✓ Completed</span>
           </div>
           <div class="project-card-body">
             <h3 class="project-card-name">Skin Disease Classification</h3>
@@ -914,6 +955,7 @@
         <div class="extra-project-card">
           <div class="extra-card-img-wrap">
             <img src="assets/project-smart-cart.jpg" alt="Smart Shopping Cart" loading="lazy">
+            <span class="project-status-badge wip">◉ Ongoing</span>
           </div>
           <div class="extra-card-body">
             <h4 class="extra-card-title">Smart Shopping Cart</h4>
@@ -995,6 +1037,7 @@
         <div class="extra-project-card">
           <div class="extra-card-img-wrap">
             <img src="assets/project-smart-cart.jpg" alt="Smart Shopping Cart" loading="lazy">
+            <span class="project-status-badge wip">◉ Ongoing</span>
           </div>
           <div class="extra-card-body">
             <h4 class="extra-card-title">Smart Shopping Cart</h4>
