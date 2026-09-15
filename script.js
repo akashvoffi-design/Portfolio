@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    AKASH V — PORTFOLIO INTERACTIONS
    Particles, Scroll Animations, 3D Cards,
    Typing Effect, Navigation, Contact Form
@@ -406,7 +406,7 @@ function initDepthCarousel() {
 
   const DEPTH_PROJECT_ITEMS = [
     {
-      image: 'assets/project-mindpulse.jpg',
+      image: 'assets/projects/project-mindpulse.jpg',
       alt: 'MindPulse — AI Mental Wellness Platform',
       num: '01 / 06',
       name: 'MindPulse',
@@ -422,7 +422,7 @@ function initDepthCarousel() {
       tags: ['React 18', 'Flask', 'Supabase', 'VGG19', 'Gemini API']
     },
     {
-      image: 'assets/project-shadowhunt.jpg',
+      image: 'assets/projects/project-shadowhunt.jpg',
       alt: 'ShadowHunt — Deepfake Detection System',
       num: '02 / 06',
       name: 'ShadowHunt',
@@ -438,7 +438,7 @@ function initDepthCarousel() {
       tags: ['Python', 'TensorFlow', 'OpenCV', 'Ethereum', 'IPFS']
     },
     {
-      image: 'assets/project-sora.jpg',
+      image: 'assets/projects/project-sora.jpg',
       alt: 'SORA AI Agent — Voice Desktop Assistant',
       num: '03 / 06',
       name: 'SORA AI Agent',
@@ -454,7 +454,7 @@ function initDepthCarousel() {
       tags: ['Python', 'Claude API', 'Gemini API', 'LiveKit', 'Whisper']
     },
     {
-      image: 'assets/project-skin-disease.jpg',
+      image: 'assets/projects/project-skin-disease.jpg',
       alt: 'Skin Disease Classification — Dermoscopic Vision',
       num: '04 / 06',
       name: 'Skin Disease Classification',
@@ -470,7 +470,7 @@ function initDepthCarousel() {
       tags: ['TensorFlow', 'Keras', 'CNN', 'EDA', 'Python']
     },
     {
-      image: 'assets/project-agentic-rag.jpg',
+      image: 'assets/projects/project-agentic-rag.jpg',
       alt: 'Agentic RAG — Autonomous Retrieval Generation',
       num: '05 / 06',
       name: 'Agentic RAG',
@@ -486,7 +486,7 @@ function initDepthCarousel() {
       tags: ['FastAPI', 'LangChain', 'ChromaDB', 'GPT-4o', 'SSE']
     },
     {
-      image: 'assets/project-smart-cart.jpg',
+      image: 'assets/projects/project-smart-cart.jpg',
       alt: 'Smart Shopping Cart — Autonomous Checkout',
       num: '06 / 06',
       name: 'Smart Shopping Cart',

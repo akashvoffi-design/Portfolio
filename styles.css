@@ -2851,7 +2851,7 @@ a {
 .contact-link-item:hover {
   background: transparent;
   border-bottom-color: rgba(78, 205, 196, 0.45);
-  transform: translateX(6px);
+  transform: none;
   color: var(--text-white);
   box-shadow: none;
 }
@@ -3121,12 +3121,12 @@ a {
 .footer-socials a:hover {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-3px) scale(1.06);
+  transform: none;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .footer-socials a:hover .footer-icon-img {
-  transform: scale(1.12);
+  transform: none;
 }
 
 .footer-link-mini-icon {
