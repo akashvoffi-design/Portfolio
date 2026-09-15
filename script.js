@@ -1,8 +1,35 @@
-﻿/* ============================================
+/* ============================================
    AKASH V — PORTFOLIO INTERACTIONS
    Particles, Scroll Animations, 3D Cards,
    Typing Effect, Navigation, Contact Form
    ============================================ */
+
+/* ── Resume Download Modal ── */
+function openResumeModal() {
+  const overlay = document.getElementById('resumeModal');
+  if (!overlay) return;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  // Close on overlay click
+  overlay.addEventListener('click', function handler(e) {
+    if (e.target === overlay) {
+      closeResumeModal();
+      overlay.removeEventListener('click', handler);
+    }
+  });
+}
+
+function closeResumeModal() {
+  const overlay = document.getElementById('resumeModal');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeResumeModal();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   initScrollProgress();
