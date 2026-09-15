@@ -372,52 +372,77 @@ function initBackToTop() {
   });
 }
 
-/* ---------- Contact Form ---------- */
+/* ---------- Contact Form (Web3Forms) ---------- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const WEB3FORMS_KEY = '4f53e9db-ff12-4680-910e-892e7bdcba6a';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name = form.querySelector('#contact-name').value.trim();
-    const email = form.querySelector('#contact-email').value.trim();
+    const name    = form.querySelector('#contact-name').value.trim();
+    const email   = form.querySelector('#contact-email').value.trim();
     const message = form.querySelector('#contact-message').value.trim();
-    const msgBox = document.getElementById('form-message');
-
-    // Validation
-    if (!name || !email || !message) {
-      showFormMessage(msgBox, 'Please fill in all fields.', 'error');
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      showFormMessage(msgBox, 'Please enter a valid email address.', 'error');
-      return;
-    }
-
-    // Simulate submission
+    const msgBox  = document.getElementById('form-message');
     const submitBtn = form.querySelector('.form-submit');
-    submitBtn.textContent = 'Sending...';
+
+    // ── Validation ──
+    if (!name || !email || !message) {
+      showFormMsg(msgBox, '⚠ Please fill in all fields.', 'error');
+      return;
+    }
+    if (!isValidEmail(email)) {
+      showFormMsg(msgBox, '⚠ Please enter a valid email address.', 'error');
+      return;
+    }
+
+    // ── Loading state ──
+    submitBtn.innerHTML = '<span class="form-spinner"></span> Sending…';
     submitBtn.disabled = true;
 
-    setTimeout(() => {
-      showFormMessage(msgBox, "Message sent! I'll get back to you soon. 🚀", 'success');
-      form.reset();
-      submitBtn.textContent = 'Send Message';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name,
+          email,
+          message,
+          subject: `New message from ${name} — Portfolio`,
+          from_name: 'Portfolio Contact Form',
+          botcheck: ''
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        showFormMsg(msgBox, '✓ Message sent! I\'ll get back to you soon 🚀', 'success');
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      showFormMsg(msgBox, '✕ Something went wrong. Please try emailing me directly.', 'error');
+      console.error('Form error:', err);
+    } finally {
+      submitBtn.innerHTML = 'Send Message →';
       submitBtn.disabled = false;
-    }, 1200);
+    }
   });
 
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  function isValidEmail(e) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
   }
 
-  function showFormMessage(el, text, type) {
+  function showFormMsg(el, text, type) {
     el.textContent = text;
     el.className = 'form-message ' + type;
     el.style.display = 'block';
-    setTimeout(() => { el.style.display = 'none'; }, 5000);
+    setTimeout(() => { el.style.display = 'none'; }, 6000);
   }
 }
 
