@@ -820,97 +820,93 @@
         <p class="section-subtitle">End-to-end AI/ML projects with real-world impact and measurable results.</p>
       </div>
 
-      <div class="projects-showcase stagger">
-        <!-- MindPulse -->
-        <div class="project-card animate-on-scroll" id="project-mindpulse">
-          <div class="project-card-img">
-            <img src="assets/project-mindpulse.jpg" alt="MindPulse">
-            <span class="project-status-badge done">✓ Completed</span>
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-name">MindPulse</h3>
-            <p class="project-card-desc">AI mental wellness platform with real-time facial emotion recognition using VGG19 CNN fine-tuned on FER2013, Gemini voice companion, mood history dashboards, and Supabase persistence.</p>
-            <div class="project-metrics-row">
-              <div class="project-metric"><span class="project-metric-val">84%</span><span class="project-metric-lbl">Accuracy</span></div>
-              <div class="project-metric"><span class="project-metric-val">VGG19</span><span class="project-metric-lbl">Model</span></div>
-              <div class="project-metric"><span class="project-metric-val">Solo</span><span class="project-metric-lbl">Full-Stack</span></div>
+      <!-- 3D Depth Carousel Showcase -->
+      <div class="depth-carousel-container animate-on-scroll">
+        <div class="depth-carousel-wrapper" style="height: 500px; position: relative;">
+          <div
+            class="depth-carousel"
+            id="projectsDepthCarousel"
+            style="--dc-perspective: 1400px;"
+            role="group"
+            aria-roledescription="carousel"
+            aria-label="3D Depth Projects Carousel"
+            tabindex="0"
+          >
+            <div class="depth-carousel__stage" id="depthCarouselStage">
+              <!-- Cards injected and animated via DepthCarousel controller -->
             </div>
-            <div class="project-tech-wrap">
-              <span class="project-tech-chip">React 18</span>
-              <span class="project-tech-chip">Flask</span>
-              <span class="project-tech-chip">Supabase</span>
-              <span class="project-tech-chip">VGG19</span>
-              <span class="project-tech-chip">Gemini API</span>
-            </div>
+
+            <!-- Arrow Controls -->
+            <button
+              type="button"
+              class="depth-carousel__arrow depth-carousel__arrow--prev"
+              id="depthPrevBtn"
+              aria-label="Previous slide"
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path
+                  d="M15 5l-7 7 7 7"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="depth-carousel__arrow depth-carousel__arrow--next"
+              id="depthNextBtn"
+              aria-label="Next slide"
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path
+                  d="M9 5l7 7-7 7"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <!-- Indicators Dots -->
+            <div class="depth-carousel__dots" id="depthDots" role="tablist" aria-label="Project slides"></div>
           </div>
         </div>
 
-        <!-- ShadowHunt -->
-        <div class="project-card animate-on-scroll" id="project-shadowhunt">
-          <div class="project-card-img">
-            <img src="assets/project-shadowhunt.jpg" alt="ShadowHunt">
-            <span class="project-status-badge done">✓ Completed</span>
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-name">ShadowHunt</h3>
-            <p class="project-card-desc">Multi-modal deepfake detection supporting image, video, and audio inputs. CNN-based detection with 91%+ accuracy and Ethereum/IPFS blockchain watermarking for tamper-evident verification.</p>
-            <div class="project-metrics-row">
-              <div class="project-metric"><span class="project-metric-val">91%+</span><span class="project-metric-lbl">Detection</span></div>
-              <div class="project-metric"><span class="project-metric-val">Multi-Modal</span><span class="project-metric-lbl">Inputs</span></div>
-              <div class="project-metric"><span class="project-metric-val">Blockchain</span><span class="project-metric-lbl">Verified</span></div>
+        <!-- Active Project Details Panel -->
+        <div class="depth-active-panel" id="depthActivePanel">
+          <div class="depth-active-top">
+            <div class="depth-active-title-wrap">
+              <span class="depth-active-num" id="depthActiveNum">01 / 06</span>
+              <h3 class="depth-active-name" id="depthActiveName">MindPulse</h3>
             </div>
-            <div class="project-tech-wrap">
-              <span class="project-tech-chip">Python</span>
-              <span class="project-tech-chip">TensorFlow</span>
-              <span class="project-tech-chip">OpenCV</span>
-              <span class="project-tech-chip">Ethereum</span>
-              <span class="project-tech-chip">IPFS</span>
-            </div>
+            <span class="depth-active-badge done" id="depthActiveBadge">✓ Completed</span>
           </div>
-        </div>
-
-        <!-- SORA -->
-        <div class="project-card animate-on-scroll" id="project-sora">
-          <div class="project-card-img">
-            <img src="assets/project-sora.jpg" alt="SORA AI Agent">
-            <span class="project-status-badge done">✓ Completed</span>
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-name">SORA AI Agent</h3>
-            <p class="project-card-desc">Voice-controlled Windows AI with real-time speech understanding, screen and camera analysis, and multi-step task automation. Claude + Gemini APIs with LiveKit and Whisper.</p>
-            <div class="project-metrics-row">
-              <div class="project-metric"><span class="project-metric-val">Real-Time</span><span class="project-metric-lbl">Voice</span></div>
-              <div class="project-metric"><span class="project-metric-val">Multi-Modal</span><span class="project-metric-lbl">Analysis</span></div>
+          <p class="depth-active-desc" id="depthActiveDesc">AI mental wellness platform with real-time facial emotion recognition using VGG19 CNN fine-tuned on FER2013, Gemini voice companion, mood history dashboards, and Supabase persistence.</p>
+          <div class="depth-active-metrics" id="depthActiveMetrics">
+            <div class="depth-active-metric-item">
+              <span class="depth-active-metric-val">84%</span>
+              <span class="depth-active-metric-lbl">Accuracy</span>
             </div>
-            <div class="project-tech-wrap">
-              <span class="project-tech-chip">Python</span>
-              <span class="project-tech-chip">Claude API</span>
-              <span class="project-tech-chip">Gemini API</span>
-              <span class="project-tech-chip">LiveKit</span>
-              <span class="project-tech-chip">Whisper</span>
+            <div class="depth-active-metric-item">
+              <span class="depth-active-metric-val">VGG19</span>
+              <span class="depth-active-metric-lbl">Model</span>
+            </div>
+            <div class="depth-active-metric-item">
+              <span class="depth-active-metric-val">Solo</span>
+              <span class="depth-active-metric-lbl">Full-Stack</span>
             </div>
           </div>
-        </div>
-
-        <!-- Skin Disease -->
-        <div class="project-card animate-on-scroll" id="project-skin">
-          <div class="project-card-img">
-            <img src="assets/project-skin-disease.jpg" alt="Skin Disease Classification">
-            <span class="project-status-badge done">✓ Completed</span>
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-name">Skin Disease Classification</h3>
-            <p class="project-card-desc">Team project at Cybernaut Edtech. Leading data & preprocessing — EDA, class balance analysis, data augmentation on HAM10000 dermoscopic images using TensorFlow and Keras.</p>
-            <div class="project-metrics-row">
-              <div class="project-metric"><span class="project-metric-val">HAM10000</span><span class="project-metric-lbl">Dataset</span></div>
-              <div class="project-metric"><span class="project-metric-val">Team Lead</span><span class="project-metric-lbl">Data Pipeline</span></div>
-            </div>
-            <div class="project-tech-wrap">
-              <span class="project-tech-chip">TensorFlow</span>
-              <span class="project-tech-chip">Keras</span>
-              <span class="project-tech-chip">CNN</span>
-              <span class="project-tech-chip">EDA</span>
-            </div>
+          <div class="depth-active-tags" id="depthActiveTags">
+            <span class="depth-active-chip">React 18</span>
+            <span class="depth-active-chip">Flask</span>
+            <span class="depth-active-chip">Supabase</span>
+            <span class="depth-active-chip">VGG19</span>
+            <span class="depth-active-chip">Gemini API</span>
           </div>
         </div>
       </div>
@@ -1253,20 +1249,46 @@
         <p>Always open to discussing new projects, creative ideas, or opportunities to be part of something amazing.</p>
         <div class="contact-links">
           <a href="mailto:akash.voffi@gmail.com" class="contact-link-item" id="contact-email-link">
-            <div class="contact-link-icon">📧</div>
-            <div class="contact-link-text"><span class="contact-link-label">Email</span><span class="contact-link-value">akash.voffi@gmail.com</span></div>
+            <div class="contact-link-icon">
+              <img src="assets/icon-gmail.png" alt="Gmail" class="contact-icon-img">
+            </div>
+            <div class="contact-link-text">
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">akash.voffi@gmail.com</span>
+            </div>
+            <span class="contact-link-arrow">↗</span>
           </a>
+
           <a href="https://github.com/akashvoffi-design" target="_blank" rel="noopener" class="contact-link-item" id="contact-github-link">
-            <div class="contact-link-icon">⟐</div>
-            <div class="contact-link-text"><span class="contact-link-label">GitHub</span><span class="contact-link-value">akashvoffi-design</span></div>
+            <div class="contact-link-icon">
+              <img src="assets/icon-github.png" alt="GitHub" class="contact-icon-img">
+            </div>
+            <div class="contact-link-text">
+              <span class="contact-link-label">GitHub</span>
+              <span class="contact-link-value">akashvoffi-design</span>
+            </div>
+            <span class="contact-link-arrow">↗</span>
           </a>
+
           <a href="https://linkedin.com/in/akash-tech-ai" target="_blank" rel="noopener" class="contact-link-item" id="contact-linkedin-link">
-            <div class="contact-link-icon">◈</div>
-            <div class="contact-link-text"><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">akash-tech-ai</span></div>
+            <div class="contact-link-icon">
+              <img src="assets/icon-linkedin.png" alt="LinkedIn" class="contact-icon-img">
+            </div>
+            <div class="contact-link-text">
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-value">akash-tech-ai</span>
+            </div>
+            <span class="contact-link-arrow">↗</span>
           </a>
-          <div class="contact-link-item">
-            <div class="contact-link-icon">📍</div>
-            <div class="contact-link-text"><span class="contact-link-label">Location</span><span class="contact-link-value">Tamil Nadu, India</span></div>
+
+          <div class="contact-link-item contact-link-static">
+            <div class="contact-link-icon">
+              <img src="assets/icon-location.png" alt="Location" class="contact-icon-img">
+            </div>
+            <div class="contact-link-text">
+              <span class="contact-link-label">Location</span>
+              <span class="contact-link-value">Tamil Nadu, India</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1320,9 +1342,15 @@
     <div class="footer-bottom">
       <p>© 2026 Akash V. Built with passion & code.</p>
       <div class="footer-socials">
-        <a href="https://github.com/akashvoffi-design" target="_blank" rel="noopener" aria-label="GitHub">⟐</a>
-        <a href="https://linkedin.com/in/akash-tech-ai" target="_blank" rel="noopener" aria-label="LinkedIn">◈</a>
-        <a href="mailto:akash.voffi@gmail.com" aria-label="Email">✉</a>
+        <a href="https://github.com/akashvoffi-design" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <img src="assets/icon-github.png" alt="GitHub" class="footer-icon-img">
+        </a>
+        <a href="https://linkedin.com/in/akash-tech-ai" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <img src="assets/icon-linkedin.png" alt="LinkedIn" class="footer-icon-img">
+        </a>
+        <a href="mailto:akash.voffi@gmail.com" aria-label="Email" title="Email">
+          <img src="assets/icon-gmail.png" alt="Gmail" class="footer-icon-img">
+        </a>
       </div>
     </div>
   </footer>
@@ -1341,6 +1369,7 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

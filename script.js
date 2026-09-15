@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initBackToTop();
   initContactForm();
-  initProjectCardTilt();
+  initDepthCarousel();
   initExtraWorkManualScroll();
   initCertificateLightbox();
   initMetricsCounter();
@@ -394,31 +394,451 @@ function initContactForm() {
   }
 }
 
-/* ---------- Project Card 3D Tilt ---------- */
-function initProjectCardTilt() {
-  const cards = document.querySelectorAll('.project-card');
+/* ==================== 3D DEPTH CAROUSEL CONTROLLER ==================== */
+function initDepthCarousel() {
+  const rootEl = document.getElementById('projectsDepthCarousel');
+  const stageEl = document.getElementById('depthCarouselStage');
+  const prevBtn = document.getElementById('depthPrevBtn');
+  const nextBtn = document.getElementById('depthNextBtn');
+  const dotsEl = document.getElementById('depthDots');
 
-  // Only on desktop
-  if (window.matchMedia('(hover: none)').matches) return;
+  if (!rootEl || !stageEl) return;
 
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+  const DEPTH_PROJECT_ITEMS = [
+    {
+      image: 'assets/project-mindpulse.jpg',
+      alt: 'MindPulse — AI Mental Wellness Platform',
+      num: '01 / 06',
+      name: 'MindPulse',
+      badge: '✓ Completed',
+      badgeClass: 'done',
+      category: 'Full-Stack AI & Mental Health',
+      desc: 'AI mental wellness platform with real-time facial emotion recognition using VGG19 CNN fine-tuned on FER2013, Gemini voice companion, mood history dashboards, and Supabase persistence.',
+      metrics: [
+        { val: '84%', lbl: 'Accuracy' },
+        { val: 'VGG19', lbl: 'Model' },
+        { val: 'Solo', lbl: 'Full-Stack' }
+      ],
+      tags: ['React 18', 'Flask', 'Supabase', 'VGG19', 'Gemini API']
+    },
+    {
+      image: 'assets/project-shadowhunt.jpg',
+      alt: 'ShadowHunt — Deepfake Detection System',
+      num: '02 / 06',
+      name: 'ShadowHunt',
+      badge: '✓ Completed',
+      badgeClass: 'done',
+      category: 'Computer Vision & Blockchain',
+      desc: 'Multi-modal deepfake detection supporting image, video, and audio inputs with 91%+ accuracy and Ethereum/IPFS blockchain watermarking for tamper-evident verification.',
+      metrics: [
+        { val: '91%+', lbl: 'Detection' },
+        { val: 'Multi-Modal', lbl: 'Inputs' },
+        { val: 'Blockchain', lbl: 'Verified' }
+      ],
+      tags: ['Python', 'TensorFlow', 'OpenCV', 'Ethereum', 'IPFS']
+    },
+    {
+      image: 'assets/project-sora.jpg',
+      alt: 'SORA AI Agent — Voice Desktop Assistant',
+      num: '03 / 06',
+      name: 'SORA AI Agent',
+      badge: '✓ Completed',
+      badgeClass: 'done',
+      category: 'Agentic AI & Multimodal',
+      desc: 'Voice-controlled Windows AI with real-time speech understanding, screen and camera analysis, and multi-step task automation using Claude & Gemini APIs with LiveKit and Whisper.',
+      metrics: [
+        { val: 'Real-Time', lbl: 'Voice' },
+        { val: 'Multi-Modal', lbl: 'Analysis' },
+        { val: 'LiveKit', lbl: 'Audio' }
+      ],
+      tags: ['Python', 'Claude API', 'Gemini API', 'LiveKit', 'Whisper']
+    },
+    {
+      image: 'assets/project-skin-disease.jpg',
+      alt: 'Skin Disease Classification — Dermoscopic Vision',
+      num: '04 / 06',
+      name: 'Skin Disease Classification',
+      badge: '✓ Completed',
+      badgeClass: 'done',
+      category: 'Medical AI & Computer Vision',
+      desc: 'Team project at Cybernaut Edtech. Led data pipeline and preprocessing — EDA, class balance analysis, and data augmentation on HAM10000 dermoscopic images using TensorFlow and Keras.',
+      metrics: [
+        { val: 'HAM10000', lbl: 'Dataset' },
+        { val: 'Team Lead', lbl: 'Data Pipeline' },
+        { val: 'CNN', lbl: 'Architecture' }
+      ],
+      tags: ['TensorFlow', 'Keras', 'CNN', 'EDA', 'Python']
+    },
+    {
+      image: 'assets/project-agentic-rag.jpg',
+      alt: 'Agentic RAG — Autonomous Retrieval Generation',
+      num: '05 / 06',
+      name: 'Agentic RAG',
+      badge: '✓ Production',
+      badgeClass: 'done',
+      category: 'Generative AI & LLM Systems',
+      desc: 'Autonomous RAG pipeline powered by LangChain AgentExecutor, ChromaDB vector embeddings, GPT-4o reasoning, and a high-performance FastAPI backend with React 18 SSE streaming.',
+      metrics: [
+        { val: 'ChromaDB', lbl: 'Vector Search' },
+        { val: 'LangChain', lbl: 'AgentExecutor' },
+        { val: 'FastAPI', lbl: 'Streaming' }
+      ],
+      tags: ['FastAPI', 'LangChain', 'ChromaDB', 'GPT-4o', 'SSE']
+    },
+    {
+      image: 'assets/project-smart-cart.jpg',
+      alt: 'Smart Shopping Cart — Autonomous Checkout',
+      num: '06 / 06',
+      name: 'Smart Shopping Cart',
+      badge: '◉ Ongoing',
+      badgeClass: 'wip',
+      category: 'Edge AI & Embedded IoT',
+      desc: 'Automated retail checkout system with real-time YOLOv8 object detection, HX711 IoT weight verification, and frictionless Razorpay/UPI instant autopay integration.',
+      metrics: [
+        { val: 'YOLOv8', lbl: 'Edge Detection' },
+        { val: 'HX711', lbl: 'IoT Sensors' },
+        { val: 'Razorpay', lbl: 'Autopay' }
+      ],
+      tags: ['YOLOv8', 'IoT', 'Razorpay', 'Computer Vision']
+    }
+  ];
 
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
+  // Configuration values based directly on user usage code
+  const depth = 220;
+  const spread = 90;
+  const tilt = 22;
+  const tiltDirection = 'right';
+  const perspective = 1400;
+  const visibleCards = 4;
+  const falloff = 0.2;
+  const blur = 6;
+  const autoplay = false;
+  const loop = true;
+  const cardWidth = 300;
+  const cardHeight = 380;
+  const radius = 18;
+  const tint = '#05060a';
+  const duration = 700;
+  const ease = 'power3.out';
+  const autoplayDelay = 3200;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    });
+  const count = DEPTH_PROJECT_ITEMS.length;
+  const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
+  let currentPos = 0;
+  let focusIndex = 0;
+  let activeIndex = 0;
+  let currentScale = 1;
+  let tween = null;
+  let dragState = null;
+  let wheelTimer = null;
+  let autoTimer = null;
+  const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Build card DOM elements
+  stageEl.innerHTML = '';
+  if (dotsEl) dotsEl.innerHTML = '';
+
+  const cardEls = [];
+  const overlayEls = [];
+  const dotEls = [];
+
+  DEPTH_PROJECT_ITEMS.forEach((item, i) => {
+    // Card element
+    const card = document.createElement('div');
+    card.className = 'depth-carousel__card';
+    card.style.width = `${cardWidth}px`;
+    card.style.height = `${cardHeight}px`;
+    card.style.borderRadius = `${radius}px`;
+    card.setAttribute('role', 'group');
+    card.setAttribute('aria-roledescription', 'slide');
+    card.setAttribute('aria-label', `${i + 1} of ${count}`);
+    card.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
+
+    card.innerHTML = `
+      <img class="depth-carousel__img" src="${item.image}" alt="${item.alt}" draggable="false" />
+      <span class="depth-carousel__tint" style="background: ${tint};"></span>
+      <div class="depth-carousel__card-overlay">
+        <div class="depth-card-top-row">
+          <span class="depth-card-badge ${item.badgeClass}">${item.badge}</span>
+          <span class="depth-card-index">${item.num}</span>
+        </div>
+        <div class="depth-card-bottom">
+          <h4 class="depth-card-title">${item.name}</h4>
+          <span class="depth-card-tagline">✦ ${item.category}</span>
+        </div>
+      </div>
+    `;
+
+    stageEl.appendChild(card);
+    cardEls.push(card);
+    overlayEls.push(card.querySelector('.depth-carousel__tint'));
+
+    // Dot indicator
+    if (dotsEl) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = `depth-carousel__dot${i === 0 ? ' is-active' : ''}`;
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dotsEl.appendChild(dot);
+      dotEls.push(dot);
+
+      dot.addEventListener('click', () => setFocus(i, true));
+    }
+
+    // Card click
+    card.addEventListener('click', () => {
+      if (dragState && dragState.moved) return;
+      setFocus(i, true);
     });
   });
+
+  // 3D Spatial Layout Calculation
+  function layout(pos) {
+    const n = count;
+    if (!n) return;
+    const dir = tiltDirection === 'left' ? -1 : 1;
+    const sc = currentScale;
+
+    for (let i = 0; i < n; i++) {
+      const el = cardEls[i];
+      if (!el) continue;
+
+      let d = i - pos;
+      if (loop && n > 1) {
+        d = ((d % n) + n) % n;
+        if (d > n / 2) d -= n;
+      }
+
+      const back = Math.max(0, d);
+      const az = Math.abs(d);
+      const shown = az <= visibleCards + 0.5;
+
+      const tz = -depth * d;
+      const tx = dir * spread * d;
+      const ry = dir * tilt * clamp(d, 0, 1);
+
+      let opacity = d < 0 ? Math.max(0, 1 + d) : 1;
+      if (!shown) opacity = 0;
+
+      const brightness = Math.max(0.15, 1 - back * falloff);
+      const blurPx = blur > 0 ? Math.min(blur, (back / Math.max(1, visibleCards)) * blur) : 0;
+      const zi = Math.round(2000 - d * 20);
+
+      el.style.transform = `translate(-50%, -50%) scale(${sc}) translateX(${tx.toFixed(2)}px) translateZ(${tz.toFixed(2)}px) rotateY(${ry.toFixed(3)}deg)`;
+      el.style.opacity = opacity.toFixed(3);
+      el.style.filter = `brightness(${brightness.toFixed(3)}) blur(${blurPx.toFixed(2)}px)`;
+      el.style.zIndex = String(zi);
+      el.style.pointerEvents = shown && opacity > 0.05 ? 'auto' : 'none';
+
+      const ov = overlayEls[i];
+      if (ov) ov.style.opacity = clamp(back * falloff * 1.25, 0, 0.86).toFixed(3);
+    }
+  }
+
+  // Update synchronized active project showcase panel
+  function updateActivePanel(idx) {
+    const item = DEPTH_PROJECT_ITEMS[idx];
+    if (!item) return;
+
+    const numEl = document.getElementById('depthActiveNum');
+    const nameEl = document.getElementById('depthActiveName');
+    const badgeEl = document.getElementById('depthActiveBadge');
+    const descEl = document.getElementById('depthActiveDesc');
+    const metricsEl = document.getElementById('depthActiveMetrics');
+    const tagsEl = document.getElementById('depthActiveTags');
+
+    if (numEl) numEl.textContent = item.num;
+    if (nameEl) nameEl.textContent = item.name;
+    if (badgeEl) {
+      badgeEl.textContent = item.badge;
+      badgeEl.className = `depth-active-badge ${item.badgeClass}`;
+    }
+    if (descEl) descEl.textContent = item.desc;
+    if (metricsEl && item.metrics) {
+      metricsEl.innerHTML = item.metrics.map(m => `
+        <div class="depth-active-metric-item">
+          <span class="depth-active-metric-val">${m.val}</span>
+          <span class="depth-active-metric-lbl">${m.lbl}</span>
+        </div>
+      `).join('');
+    }
+    if (tagsEl && item.tags) {
+      tagsEl.innerHTML = item.tags.map(t => `<span class="depth-active-chip">${t}</span>`).join('');
+    }
+  }
+
+  function notify(idx) {
+    activeIndex = idx;
+    dotEls.forEach((dot, i) => {
+      if (i === idx) {
+        dot.classList.add('is-active');
+        dot.setAttribute('aria-selected', 'true');
+      } else {
+        dot.classList.remove('is-active');
+        dot.setAttribute('aria-selected', 'false');
+      }
+    });
+
+    cardEls.forEach((card, i) => {
+      card.setAttribute('aria-hidden', i !== idx ? 'true' : 'false');
+    });
+
+    updateActivePanel(idx);
+  }
+
+  // Tweening transition using GSAP with fallback
+  function tweenTo(target, animate) {
+    if (tween) tween.kill();
+    const proxy = { p: currentPos };
+    const dur = animate && !reducedMotion ? duration / 1000 : 0;
+
+    if (window.gsap) {
+      tween = gsap.to(proxy, {
+        p: target,
+        duration: dur,
+        ease: ease,
+        onUpdate: () => {
+          currentPos = proxy.p;
+          layout(proxy.p);
+        },
+        onComplete: () => {
+          const n = count;
+          if (n > 0) currentPos = ((currentPos % n) + n) % n;
+          layout(currentPos);
+        }
+      });
+    } else {
+      currentPos = target;
+      if (count > 0) currentPos = ((currentPos % count) + count) % count;
+      layout(currentPos);
+    }
+  }
+
+  function setFocus(rawIndex, animate = true) {
+    const n = count;
+    if (!n) return;
+    const idx = loop ? ((rawIndex % n) + n) % n : clamp(rawIndex, 0, n - 1);
+    let delta = idx - currentPos;
+    if (loop && n > 1) {
+      delta = ((delta % n) + n) % n;
+      if (delta > n / 2) delta -= n;
+    }
+    tweenTo(currentPos + delta, animate);
+    if (idx !== focusIndex) {
+      focusIndex = idx;
+      notify(idx);
+    }
+  }
+
+  function navigateBy(step) {
+    setFocus(focusIndex + step, true);
+  }
+
+  // ResizeObserver for dynamic scaling
+  const ro = new ResizeObserver(entries => {
+    if (!entries || !entries[0]) return;
+    const w = entries[0].contentRect.width;
+    const needed = cardWidth + Math.abs(spread) * 2 + 120;
+    currentScale = clamp(w / needed, 0.38, 1);
+    layout(currentPos);
+  });
+  ro.observe(rootEl);
+
+  // Mouse wheel scroll support
+  rootEl.addEventListener('wheel', e => {
+    if (count < 2) return;
+    e.preventDefault();
+    if (tween) tween.kill();
+    const raw = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    const delta = e.deltaMode === 1 ? raw * 24 : raw;
+    const step = clamp(delta / (cardWidth * 0.9), -0.6, 0.6);
+    currentPos += step;
+    layout(currentPos);
+    if (wheelTimer) clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(() => setFocus(Math.round(currentPos), true), 130);
+  }, { passive: false });
+
+  // Pointer drag & touch flick
+  rootEl.addEventListener('pointerdown', e => {
+    if (count < 2) return;
+    if (tween) tween.kill();
+    dragState = {
+      x: e.clientX,
+      startPos: currentPos,
+      lastX: e.clientX,
+      lastT: performance.now(),
+      v: 0,
+      moved: false,
+      id: e.pointerId
+    };
+  });
+
+  rootEl.addEventListener('pointermove', e => {
+    if (!dragState) return;
+    const stepPx = Math.max(cardWidth * 0.55 * currentScale, 40);
+    const dx = e.clientX - dragState.x;
+    if (!dragState.moved && Math.abs(dx) > 4) {
+      dragState.moved = true;
+      try { rootEl.setPointerCapture(dragState.id); } catch (_) {}
+    }
+    if (!dragState.moved) return;
+    const now = performance.now();
+    const dt = Math.max(now - dragState.lastT, 1);
+    dragState.v = (e.clientX - dragState.lastX) / dt;
+    dragState.lastX = e.clientX;
+    dragState.lastT = now;
+    currentPos = dragState.startPos - dx / stepPx;
+    layout(currentPos);
+  });
+
+  const onPointerEnd = () => {
+    if (!dragState) return;
+    const ds = dragState;
+    dragState = null;
+    if (!ds.moved) return;
+    const stepPx = Math.max(cardWidth * 0.55 * currentScale, 40);
+    const projected = currentPos - (ds.v * 180) / stepPx;
+    setFocus(Math.round(projected), true);
+  };
+
+  rootEl.addEventListener('pointerup', onPointerEnd);
+  rootEl.addEventListener('pointercancel', onPointerEnd);
+
+  // Keyboard navigation
+  rootEl.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      navigateBy(-1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      navigateBy(1);
+    }
+  });
+
+  // Arrow controls
+  if (prevBtn) prevBtn.addEventListener('click', () => navigateBy(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => navigateBy(1));
+
+  // Autoplay support if enabled
+  if (autoplay && !reducedMotion && count > 1) {
+    let isHovered = false;
+    const startAuto = () => {
+      if (autoTimer) clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        if (!isHovered) navigateBy(1);
+      }, Math.max(autoplayDelay, 600));
+    };
+    rootEl.addEventListener('mouseenter', () => { isHovered = true; });
+    rootEl.addEventListener('mouseleave', () => { isHovered = false; });
+    startAuto();
+  }
+
+  // Initial layout & notify
+  layout(0);
+  notify(0);
 }
 
 /* ---------- Extra Work Manual & Infinite Scroll Controller ---------- */
